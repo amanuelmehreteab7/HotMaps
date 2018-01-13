@@ -16,106 +16,24 @@ var coordinates = [
   [38.8977158, -77.0261858],
 ];
 
-initMap();
+var map;
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 12,
+        center: new google.maps.LatLng(38.8961336,-77.0028392),
+        mapTypeId: 'terrain'
 
-function initMap() {
-  var uluru = {
-    lat: 38.8961336,
-    lng: -77.0028392
-  };
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 12,
-    center: uluru
-  });
-  multipleCoordinates();
-  // var marker = new google.maps.Marker({
-  //   position: uluru,
-  //   map: map
-  // });
+      });
+  mapCoordinates();
 }
 
-function placeMarker(lat, long) {
-  var uluru = {
-    lat: lat,
-    long: long
-  }
-  var marker = new google.maps.Marker({
-    position: uluru,
-    map: map
-  });
-}
-
-function centerMap(lat, long) {
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 13,
-    center: uluru
-  });
-}
-
-function multipleCoordinates() {
-  for (var i = 0; i < coordinates.length; i++) {
-    var uluru = {
-      lat: coordinates[i][0],
-      lng: coordinates[i][1]
+    function mapCoordinates() {
+      for (var i = 0; i < coordinates.length; i++) {
+        var latLng = new google.maps.LatLng(coordinates[i][0],coordinates[i][1]);
+        console.log(latLng);
+        var marker = new google.maps.Marker({
+          position: latLng,
+          map: map
+        });
+      }
     }
-
-    // var latLng = new google.maps.LatLng(coordinates[i][0], coordinates[i][1]);
-    var marker = new google.maps.Marker({
-      position: uluru,
-      map: map
-    });
-  }
-}
-
-// Get the value of the search term
-// $("#search").keypress(function(e) {
-//     if(e.which == 13) {
-//       event.preventDefault();
-//       searchLocation = $("#search").val().trim();
-//         console.log('search Location ' + searchLocation);
-//         searchCoordinates();
-//
-//         // $("#searchDirections").hide();
-//         // initMap();
-//     }
-// });
-//
-// //Need to convert the search term into latitude and longitude in order to find the center of the Maps
-//
-// function searchCoordinates() {
-//   var coordinatesQueryURL = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + searchLocation + '&key=' + api_key;
-//
-//   $.ajax({
-//     url: coordinatesQueryURL,
-//     method: "GET"
-//   }).done(function(response) {
-//     console.log('query url ' + coordinatesQueryURL);
-//     console.log(response);
-//     for (var i = 0; i < response.results.length; i++) {
-//       searchLatitude = parseFloat(response.results[0].geometry.location.lat)
-//       searchLongitude = parseFloat(response.results[0].geometry.location.lng)
-//       coordinates = {
-//         lat: searchLatitude,
-//         lng: searchLongitude
-//       };
-//       console.log(coordinates);
-//     }
-//     // placeMarker(coordinates.lat,coordinates.lng);
-//   });
-// }
-//
-// $(document).ready(function(){
-//   function initMap(){
-//     var coordinates = {
-//       lat: 38.9071923,
-//       lng: searchLongitude
-//     };
-//
-//     var map = new google.maps.Map(document.getElementById('map'), {
-//            zoom: 4,
-//            center: coordinates
-//          });
-//     // $("#map").append(map)
-//   }
-//
-// })
