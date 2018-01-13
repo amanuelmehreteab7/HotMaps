@@ -46,5 +46,4 @@ function initMap(){
          zoom: 4,
          center: coordinates
        });
-       console.log('coordinates ' + coordinates);
 }
