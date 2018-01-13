@@ -37,9 +37,7 @@ function searchCoordinates (){
 }
 
 function initMap(){
-  var coordinates = {
-    lat: searchLatitude,
-    lng: searchLongitude
+  var coordinates = {lat: searchLatitude,lng: searchLongitude
   };
 
   var map = new google.maps.Map(document.getElementById('map'), {
