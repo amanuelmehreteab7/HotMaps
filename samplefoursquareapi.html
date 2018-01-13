@@ -5,11 +5,27 @@
 <script>
 
 
+
+// const location = 'll=40.7484,-73.9857';
+
+
+
 $(document).ready(function () {
-	var url = "https://api.foursquare.com/v2/venues/search?ll=40.7484,-73.9857&categoryId=52e81612bcbc57f1066b79e6&client_id=PDKD4SZGV2WUM3HW00FFLWJGUMMLSFLMG4UGKN4DEGDH0GWB&client_secret=JWQ5SO32GUFAKVDX5QWE1PPIHSKER40VTOWT01PUSA1O42TS&v=20170101";
+  // var location1;
+  // location = () => {
+  // return location1 = 'll=40.7484,-73.9857'
+  // }
+  console.log()
+	
   // var url = "https://api.foursquare.com/v2/venues/search"
     var par;
     var myvar;
+    var location = 'll=40.7484,-73.9857';
+     var cat = '4d4b7104d754a06370d81259';
+     var url = `https://api.foursquare.com/v2/venues/search?${location}&categoryId=${cat}&client_id=PDKD4SZGV2WUM3HW00FFLWJGUMMLSFLMG4UGKN4DEGDH0GWB&client_secret=JWQ5SO32GUFAKVDX5QWE1PPIHSKER40VTOWT01PUSA1O42TS&v=20170101`;
+
+
+
 
 	$.ajax({
 	  url: url,
@@ -19,14 +35,30 @@ $(document).ready(function () {
 	     // console.log(myvar);
 	   // console.log(data.response.categories[0].categories[0]);
      console.log(data.response)
+     int = data.response.venues.length;
+     console.log(int);
+     data.response.venues.sort(function(a, b){
+      return b.hereNow.count - a.hereNow.count;
+     })
+     console.log(data.response);
+  //    function myFunction2() {
+
+  //   data.response.venues.hereNow.count.sort(function(a, b){return a - b});
+  // }
+  //   myFunction2();
+     // for(i=0; i < int; i++){
+     //    console.log('a');
+
+     // }
+     console.log(data.response.venues[0].hereNow.count)
      // console.log(data.response.categories[0])
 	   // console.log(data[0].type);
     //  console.log(data.response)
 	   // console.log(JSON.parse(data.type));
 	   //   console.log(data[1]['type']);
-	  },
+	  
 	 
-	});
+	}});
 
 	});
 
