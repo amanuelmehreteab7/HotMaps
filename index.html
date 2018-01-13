@@ -9,7 +9,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
   <!--Import materialize.css-->
-  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection">
+  <link rel="stylesheet" href="./style.css"
+
 
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -31,8 +33,7 @@
 
   <div class="row section">
     <!-- Google Maps here -->
-    <div class="col m9">
-      <img src="http://rediscoverwashingtondc.com/images/washington-dc-map.png" alt="Google Maps">
+    <div class="col m9" id="map">
 
     </div>
 
@@ -67,6 +68,8 @@
 
 
   <!--Import jQuery before materialize.js-->
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALhVNfaKgpvJuLqX6VuPljcwgUcEj_qHw&callback=initMap"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="./script.js"></script>
   <script type="text/javascript" src="js/materialize.min.js"></script>
