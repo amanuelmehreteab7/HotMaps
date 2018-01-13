@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+
+
+$(document).ready(function () {
+	var url = "https://api.foursquare.com/v2/venues/search?ll=40.7484,-73.9857&categoryId=52e81612bcbc57f1066b79e6&client_id=PDKD4SZGV2WUM3HW00FFLWJGUMMLSFLMG4UGKN4DEGDH0GWB&client_secret=JWQ5SO32GUFAKVDX5QWE1PPIHSKER40VTOWT01PUSA1O42TS&v=20170101";
+  // var url = "https://api.foursquare.com/v2/venues/search"
+    var par;
+    var myvar;
+
+	$.ajax({
+	  url: url,
+	   //method: 'GET',
+	  success: function(data){
+	     // myvar = JSON.parse(data);
+	     // console.log(myvar);
+	   // console.log(data.response.categories[0].categories[0]);
+     console.log(data.response)
+     // console.log(data.response.categories[0])
+	   // console.log(data[0].type);
+    //  console.log(data.response)
+	   // console.log(JSON.parse(data.type));
+	   //   console.log(data[1]['type']);
+	  },
+	 
+	});
+
+	});
+
+
+</script>
+</head>
+<body>
+
+
+<div class="buttons"></div>
+
+<div class="search">
+    <input id="input" type="text">
+    <input id="search" type="button" value="search">
+
+</div>
+
+<div class="giphy"></div>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
