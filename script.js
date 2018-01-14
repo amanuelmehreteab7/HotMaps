@@ -1,8 +1,5 @@
 var api_key = 'AIzaSyALhVNfaKgpvJuLqX6VuPljcwgUcEj_qHw'
 var fscoordinates = []; //This will hold our array of objects which is the response from FourSquare
-var searchLocation;
-var searchLatitude;
-var searchLongitude;
 var map;
 var coordinates = [
   [38.9125591, -77.0361521],
