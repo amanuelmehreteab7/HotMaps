@@ -8,6 +8,12 @@
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
+  <!--Import materialize.css-->
+  <link rel="stylesheet" href="./style.css">
+
+  <!-- Link to Moment.js should go here -->
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
@@ -30,13 +36,15 @@
   <header>
     <div class="container headerContent">
       <div class="col l12 m12 s12">
-        <h2 class="z-depth-3">What is Happening in Washington DC</h2>
+        <h2 class="z-depth-3">What is Happening in Washington DC</h1>
+        </div>
       </div>
     </div>
   </header>
 
   <div class="container">
-    <!-- Google Maps here -->
+    <div class="row">
+          <!-- Google Maps here -->
     <div class="col m9" id="map">
 
     </div>
@@ -49,6 +57,8 @@
 
     </div>
   </div>
+</div>
+
 
   <!-- Chat box might got here -->
   <div class="row section">
@@ -56,10 +66,13 @@
 
 
   <!--Import jQuery before materialize.js-->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALhVNfaKgpvJuLqX6VuPljcwgUcEj_qHw&callback=initMap"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="category.js"></script>
-  <script type="text/javascript" src="place.js"></script>
-  <script type="text/javascript" src="foursq.js"></script>
+  <script type="text/javascript" src="./category.js"></script>
+  <script type="text/javascript" src="./checkbox.js"></script>
+  <script type="text/javascript" src="./venue.js"></script>
+  <script type="text/javascript" src="./script.js"></script>
+
 
 </body>
 

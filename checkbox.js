@@ -1,6 +1,5 @@
 // Initialize checkboxes
 var catId = $('#cat');
-
 for (var i = 0; i < categories.length; i++) {
   addCheckBox(categories[i]);
 }
@@ -8,9 +7,8 @@ for (var i = 0; i < categories.length; i++) {
 // On click search for 'button that was clicked'
 $('.cat').on('click', function() {
   var search = $(this).attr('data-catId');
-  console.log('searchID: ', search);
 
-  fourSquareFunction(search);
+  searchFourSquare(search);
 });
 
 // Add checkbox with search categoryID to data attribute
