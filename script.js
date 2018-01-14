@@ -1,9 +1,22 @@
-var api_key = 'AIzaSyALhVNfaKgpvJuLqX6VuPljcwgUcEj_qHw';
-var map;
+var api_key = 'AIzaSyALhVNfaKgpvJuLqX6VuPljcwgUcEj_qHw'
 var fscoordinates = []; //This will hold our array of objects which is the response from FourSquare
+var searchLocation;
+var searchLatitude;
+var searchLongitude;
+var map;
+var coordinates = [
+  [38.9125591, -77.0361521],
+  [38.9125591, -77.0361521],
+  [38.9125591, -77.0361521],
+  [38.9125591, -77.0361521],
+  [38.8835686, -77.0818237],
+  [38.8981414, -77.0668551],
+  [38.8893706, -77.0200036],
+  [38.8912662, -77.0282541],
+  [38.8881601, -77.0220566],
+  [38.8977158, -77.0261858],
+];
 
-
-//Initilizing the map from Google Maps API documentation
 var map;
     function initMap() {
       map = new google.maps.Map(document.getElementById('map'), {
@@ -26,7 +39,13 @@ var map;
       var now = moment().format("YYYYMMDD");
 
       //URL endpoint for foursquare which contains the city of Washington DC hardcoded in for now
-      var squareURL = 'https://api.foursquare.com/v2/venues/search?near=Washington&client_id=' + clientID + '&client_secret=' + clientSecret + '&v=' + now;
+      var squareURL = 'https://api.foursquare.com/v2/venues/search?' +
+      'near=Washington&' +
+      'client_id=' + clientID + '&' +
+      'client_secret=' + clientSecret + '&' +
+      'v=' + now;
+      // Radius search term to improve results. Right now it might default to
+      // something that is really small. Causing the cluster around white house.
 
       //Making a call to the url for the city in order to display the popular locations
       $.ajax({
