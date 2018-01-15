@@ -15,7 +15,7 @@
     id: '4bf58dd8d48988d1e5931735'
   }
   var cat5 = {
-    name: 'Sport Events',
+    name: 'Athletic Facilities',
     id: '4f4528bc4b90abdf24c9de85'
   }
   var cat6 = {

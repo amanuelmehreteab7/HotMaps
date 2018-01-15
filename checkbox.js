@@ -5,10 +5,11 @@ for (var i = 0; i < categories.length; i++) {
 }
 
 // On click search for 'button that was clicked'
-$('.cat').on('click', function() {
-  var search = $(this).attr('data-catId');
+$('.cat').change(function() {
+  var searchId = $(this).attr('data-cat-id');
 
-  searchFourSquare(search);
+  deleteMarkers();
+  searchFourSquare(searchId);
 });
 
 // Add checkbox with search categoryID to data attribute
@@ -16,9 +17,10 @@ function addCheckBox(place) {
 
   var pTag = $('<p>');
 
-  var input = $('<input type="checkbox"/>');
+  var input = $('<input type="radio"/>');
   input.attr('id', place.name);
-  input.attr('data-catId', place.id);
+  input.attr('data-cat-id', place.id);
+  input.attr('name', 'group-cat')
   input.addClass('cat');
 
   var label = $('<label>');
