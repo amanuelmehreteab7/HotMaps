@@ -10,11 +10,11 @@ function initMap() {
 
   });
   //When the map is initialized, we should search FourSquare and place all the markers
-  searchFourSquare();
+  // searchFourSquare();
 }
 
 //Creating a request to search four square
-function searchFourSquare() {
+function searchFourSquare(search) {
 
   var clientID = 'WH0QFEZQIC5FOAJTI2EIZNGUPNGVJFPCLFMDD4NLDSITUSVY';
   var clientSecret = 'PDNYILQOD54ECFYKY2HPWNOHF3HRS4SHCSALCKEE3U1ZY3HE';
@@ -32,7 +32,7 @@ function searchFourSquare() {
     'll=38.894470,-77.036583&' + // Washington DC Coord
     'client_id=' + clientID + '&' +
     'client_secret=' + clientSecret + '&' +
-
+    'categoryId=' + search + '&' +
     'radius=' + radius + '&' +
     'v=' + now;
   // Radius search term to improve results. Right now it might default to
