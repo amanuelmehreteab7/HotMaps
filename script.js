@@ -44,6 +44,11 @@ function searchFourSquare(search) {
     method: "GET"
   }).done(function(data) {
 
+//sorts the response by most hereNows
+    sorted = data.response.venues.sort(function(a, b){
+     return b.hereNow.count - a.hereNow.count;
+    })
+
     // For each of the venue responses matching the city, loop through and create an array of objects
     var venues = data.response.venues;
 
@@ -55,10 +60,14 @@ function searchFourSquare(search) {
       var lng = venues[i].location.lng;
       var url = venues[i].url;
       var hereNow = venues[i].hereNow.count;
+      var address = venues[i].location.address;
 
       var venue = new Venue(name, cat, lat, lng, url, hereNow);
 
       fscoordinates.push(venue);
+
+      updateTable(name, hereNow, address, url)
+
 
     } // Completes the loop through add all responses to an array of objects
     //Loop through all of the objects to display all markers on the map
@@ -69,6 +78,9 @@ function searchFourSquare(search) {
         lng: fscoordinates[j].lng
       }
       addMarker(latLng);
+      // updateTable(name, hereNow, address, url)
+
+      // console.log(hereNow);
     } // Completes the loop through the array of objects
     console.log('venues: ', fscoordinates);
   }); // Completes the function that pulls down the response
