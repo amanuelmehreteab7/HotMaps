@@ -1,3 +1,4 @@
+
 var api_key = 'AIzaSyALhVNfaKgpvJuLqX6VuPljcwgUcEj_qHw'
 var fscoordinates = []; //This will hold our array of objects which is the response from FourSquare
 var map;
@@ -8,13 +9,13 @@ function initMap() {
     center: new google.maps.LatLng(38.8961336, -77.0028392),
 
   });
-
   //When the map is initialized, we should search FourSquare and place all the markers
-  // searchFourSquare(search);
+  searchFourSquare();
 }
 
 //Creating a request to search four square
-function searchFourSquare(search) {
+function searchFourSquare() {
+
   var clientID = 'WH0QFEZQIC5FOAJTI2EIZNGUPNGVJFPCLFMDD4NLDSITUSVY';
   var clientSecret = 'PDNYILQOD54ECFYKY2HPWNOHF3HRS4SHCSALCKEE3U1ZY3HE';
 
@@ -31,7 +32,7 @@ function searchFourSquare(search) {
     'll=38.894470,-77.036583&' + // Washington DC Coord
     'client_id=' + clientID + '&' +
     'client_secret=' + clientSecret + '&' +
-    'categoryId=' + search + '&' +
+
     'radius=' + radius + '&' +
     'v=' + now;
   // Radius search term to improve results. Right now it might default to
@@ -57,7 +58,9 @@ function searchFourSquare(search) {
 
       var venue = new Venue(name, cat, lat, lng, url, hereNow);
 
+
       fscoordinates.push(venue);
+
 
       //Loop through all of the objects to display all markers on the map
       for (var j = 0; j < fscoordinates.length; j++) {
