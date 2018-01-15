@@ -41,15 +41,28 @@ var map;
       }).done(function(response){
 
         // For each of the venue responses matching the city, loop through and create an array of objects
-
+        // console.log(response);
         for (var i = 0; i < response.response.venues.length; i++) {
           fscoordinates.push({
             name: response.response.venues[i].name,
             lat:response.response.venues[i].location.lat,
             lng: response.response.venues[i].location.lng,
-            hereNow:response.response.venues[i].hereNow.count
+            hereNow:response.response.venues[i].hereNow.count,
+            id:response.response.venues[i].categories[0].id,
+            categoriy: response.response.venues[i].categories[0].pluralName
           })
-              // console.log(fscoordinates);
+
+              ////=====
+              mLat = response.response.venues[0].location.lat;
+              console.log('Latitud coordinates' + mLat);
+              mLgt = response.response.venues[0].location.lng;
+              console.log('Longitud coordinates' + mLgt);
+                map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 12,
+                center: new google.maps.LatLng(mLat,mLgt),
+                  });
+
+              //=====
 
           //Loop through all of the objects to display all markers on the map
 
@@ -61,13 +74,9 @@ var map;
             });
           } // Completes the loop through the array of objects
       } // Completes the loop through add all responses to an array of objects
-      // debugger
-      // mLat = response.response.venues[0].location.lat;
-      // console.log('Latitud coordinates' + mLat);
-      // mLgt = response.response.venues[0].location.lng;
-      // console.log('Longitud coordinates' + mLgt);
-      // initMap()
     }); // Completes the function that pulls down the response
+      // console.log(fscoordinates);
+
   } // Completes the entire function that searches foursquare
 
 
@@ -84,7 +93,7 @@ var map;
     fscoordinates = []
     $('#header').html('<h2>' + 'What is Happening in ' + locat + '</h2>');
     searchFourSquare()
-    initMap()
+    // initMap()
   })
 
   $(document).ready(function() {
