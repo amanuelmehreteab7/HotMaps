@@ -1,13 +1,16 @@
 var tableBodyID = $('#addRow');
 
-function updateTable(name, hereNow, address, url) {
+function updateTable(name, hereNow, address, url, id) {
 
   // document.getElementById("table").clear();
   // document.getElementById("table").style.display="table";
 
   var rTag = $('<tr>');
 
+  // rTag.attr('id', id)
+  rTag.attr("onclick", "tableClick(this.id)");
   rTag.attr('class', 'delete');
+  rTag.attr('id', id);
   var tableLocationName = $('<td>');
   tableLocationName.text(name);
 
@@ -30,3 +33,7 @@ function updateTable(name, hereNow, address, url) {
   tableURL.append(ah)
   tableBodyID.append(rTag);
 }
+tableClick = (e)  => {
+    whyNot(e);
+    console.log(e);
+  }
