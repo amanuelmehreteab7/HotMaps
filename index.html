@@ -16,11 +16,17 @@
   <!-- Link to Moment.js should go here -->
   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
+<!-- <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script> -->
+
+
+
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
 <body>
+
+ <script src="lodash.js"></script>
 
   <!-- We may use this later -->
 
@@ -57,7 +63,9 @@
         <input id="search" type="search" placeholder="Type your City"required>
       </div>
 
-    <div class="row">
+<!-- use later to search by categoryId -->
+
+    <!-- <div class="row">
 
       <div class="input-field col 12">
         <select id = "resultsNumber">
@@ -100,12 +108,16 @@
        </select>
        <label>Category</label>
      </div>
-     </div>
+     </div> -->
 
       <br>
-      <button id ='searchCity'  class="btn waves-effect waves-light" type="submit" name="action">Search
-          <i class="material-icons right">send</i>
-      </button>
+      <a id ='searchCity' value=1 class="waves-effect waves-light btn-large">Search</a>
+
+<!-- User later -->
+      <!-- <a id ='mostPopular' value=2 class="waves-effect waves-light btn-large">Most popular</a>
+    <div id = 'mostPopularResults'>
+
+    </div> -->
 
 
     </div>
@@ -124,7 +136,6 @@
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="./script.js"></script>
   <script type="text/javascript" src="js/materialize.min.js"></script>
-
 </body>
 
 </html>
