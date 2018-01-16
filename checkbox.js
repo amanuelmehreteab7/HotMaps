@@ -8,8 +8,10 @@ for (var i = 0; i < categories.length; i++) {
 $('.cat').change(function() {
   var searchId = $(this).attr('data-cat-id');
 
+  $('.delete').empty();
   deleteMarkers();
   searchFourSquare(searchId);
+
 });
 
 // Add checkbox with search categoryID to data attribute

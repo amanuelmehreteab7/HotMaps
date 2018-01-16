@@ -57,10 +57,34 @@
 
       </form>
 
+      <!-- Element Showed -->
+ <a id="menu" class="waves-effect waves-light btn btn-floating" style="display:none"><i class="material-icons">menu</i></a>
+
+ <!-- Tap Target Structure -->
+ <div class="tap-target" data-activates="menu">
+   <div class="tap-target-content">
+     <h5 class="disoveryName">Title</h5>
+     <p class="disoveryHereNow">A bunch of text</p>
+     <p class="disoveryAddress">A bunch of text</p>
+     <p class="disoveryURL">A bunch of text</p>
+
+   </div>
+ </div>
+
+
     </div>
   </div>
 </div>
 
+<div class="table">
+  <table class="responsive highlight striped" id="addRow">
+  <tr>
+    <th>Name</th>
+    <th>Number of people here</th>
+    <th>Address</th>
+    <th>URL</th>
+  </tr>
+</div>
 
   <!-- Chat box might got here -->
   <div class="row section">
@@ -70,10 +94,14 @@
   <!--Import jQuery before materialize.js-->
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALhVNfaKgpvJuLqX6VuPljcwgUcEj_qHw&callback=initMap"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
   <script type="text/javascript" src="./category.js"></script>
   <script type="text/javascript" src="./checkbox.js"></script>
   <script type="text/javascript" src="./venue.js"></script>
+  <script type="text/javascript" src="./discovery.js"></script>
   <script type="text/javascript" src="./script.js"></script>
+  <script type="text/javascript" src="./table.js"></script>
+
 
 
 </body>
