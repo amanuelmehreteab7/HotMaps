@@ -19,7 +19,7 @@
 </head>
 
 <body>
-
+<script src="lodash.js"></script>
   <!-- We may use this later -->
   <!-- <nav>
     <div class="nav-wrapper">
@@ -37,7 +37,7 @@
     <div class="container headerContent">
 
       <div class="col l12 m12 s12">
-        <h2 class="z-depth-3">What is Happening in Washington DC</h1>
+        <h2 id='header'class="z-depth-3">What is Happening in Washington DC</h1>
 
         </div>
       </div>
@@ -74,6 +74,16 @@
 
     </div>
   </div>
+
+   <!-- search bar -->
+  <div class="input-field">
+  <input id="search" type="search" placeholder="Type your City"required>
+  <br>
+  <a id ='searchCity' value=1 class="waves-effect waves-light btn-large">Search</a>
+  </div>
+
+
+
 </div>
 
 <div class="table">

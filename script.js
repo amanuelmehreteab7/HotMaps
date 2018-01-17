@@ -3,13 +3,18 @@ var fscoordinates = []; //This will hold our array of objects which is the respo
 var map;
 var markers = [];
 // var id;
+var sorted2
+var mapLat = 38.8961336
+var mapLgt = -77.0028392
+var area = 'Washington'
+var topTen = []
 
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 12,
     center: {
-      lat: 38.8961336,
-      lng: -77.0028392
+      lat: mapLat,
+      lng: mapLgt
     }
   });
 }
@@ -29,13 +34,14 @@ function searchFourSquare(search) {
   //URL endpoint for foursquare which contains the city of Washington DC hardcoded in for now
   // on checkbox click trigger this search!!!
   var squareURL = 'https://api.foursquare.com/v2/venues/search?' +
-    // 'near=Washington&' +
+    'near='+ area + '&' +
      // use + '?' +
-    'll=38.894470,-77.036583&' + // Washington DC Coord
+    // 'll=38.894470,-77.036583&' + // Washington DC Coord
     'client_id=' + clientID + '&' +
     'client_secret=' + clientSecret + '&' +
-    'categoryId=' + search + '&' +
+    // 'categoryId=' + search + '&' +
     'radius=' + radius + '&' +
+    'limit=50' +'&' +
     'v=' + now;
   // Radius search term to improve results. Right now it might default to
   // something that is really small. Causing the cluster around white house.
@@ -49,11 +55,20 @@ function searchFourSquare(search) {
 //sorts the response by most hereNows
     sorted = data.response.venues.sort(function(a, b){
      return b.hereNow.count - a.hereNow.count;
+
     })
+
+//sorts the response by most hereNows
+        sorted2 = data.response.venues.sort(function(a, b){
+         return b.stats.checkinsCount - a.stats.checkinsCount;
+
+      })
 
     // For each of the venue responses matching the city, loop through and create an array of objects
     var venues = data.response.venues;
-    console.log(venues);
+
+    // console.log('===venues======');
+    // console.log(venues);
 
     for (var i = 0; i < venues.length; i++) {
 
@@ -65,10 +80,13 @@ function searchFourSquare(search) {
       var hereNow = venues[i].hereNow.count;
       var address = venues[i].location.address;
       var id = venues[i].id;
-      // return id;
-      // console.log(id);
+      var checkinsCount = venues[i].stats.checkinsCount;
+      var category_Id = venues[i].categories[0].id
 
-      var venue = new Venue(name, cat, lat, lng, url, hereNow);
+      var venue = new Venue(name, cat, lat, lng, url, hereNow, checkinsCount, category_Id);
+
+      console.log('loging venue');
+      console.log(venue);
 
       fscoordinates.push(venue);
       var latLng = {
@@ -82,6 +100,8 @@ function searchFourSquare(search) {
 
 
     } // Completes the loop through add all responses to an array of objects
+
+
     //Loop through all of the objects to display all markers on the map
     // for (var j = 0; j < fscoordinates.length; j++) {
     //   // var latLng = new google.maps.LatLng(fscoordinates[j].lat, fscoordinates[j].lng);\
@@ -97,8 +117,26 @@ function searchFourSquare(search) {
       // console.log(hereNow);
     // } // Completes the loop through the array of objects
     // console.log('venues: ', fscoordinates);
+
+    console.log('===fscoordinates======');
+    console.log(fscoordinates);
+
+// create an array of object with unique category IDs
+
+    var uniqueCategory = [];
+    uniqueCategory = _.uniqBy(fscoordinates, 'category_Id')
+
+
+    // select the top 10 categories
+
+    uniqueCategory.splice([9],uniqueCategory.length - 10)
+    topTen = uniqueCategory
+    console.log('---Top Ten---');
+    console.log(topTen);
+
   }); // Completes the function that pulls down the response
 } // Completes the entire function that searches foursquare
+
 
 // Adds a marker to the map and push to the array.
 function addMarker(latLng, id) {
@@ -147,3 +185,19 @@ function deleteMarkers() {
   fscoordinates = [];
   markers = [];
 }
+
+// Trigger search event
+
+$('#searchCity').on('click', function(event) {
+  console.log('searchCity Button - Clicked');
+  event.preventDefault();
+  area = $('#search').val().trim();
+  fscoordinates = []
+  $('#header').html('<h2>' + 'What is Happening in ' + area + '</h2>');
+  searchFourSquare()
+})
+$('#search').keypress(function(e){
+    if(e.which == 13){//Enter key pressed
+        $('#searchCity').click();//Trigger search button click event
+    }
+});
