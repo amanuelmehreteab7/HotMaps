@@ -33,6 +33,11 @@ function searchFourSquare(search) {
 
   //URL endpoint for foursquare which contains the city of Washington DC hardcoded in for now
   // on checkbox click trigger this search!!!
+
+console.log('a value');
+console.log(search);
+if (search == undefined ) {
+
   var squareURL = 'https://api.foursquare.com/v2/venues/search?' +
     'near='+ area + '&' +
      // use + '?' +
@@ -43,6 +48,33 @@ function searchFourSquare(search) {
     'radius=' + radius + '&' +
     'limit=50' +'&' +
     'v=' + now;
+
+} else {
+
+  var squareURL = 'https://api.foursquare.com/v2/venues/search?' +
+    'near='+ area + '&' +
+     // use + '?' +
+    // 'll=38.894470,-77.036583&' + // Washington DC Coord
+    'client_id=' + clientID + '&' +
+    'client_secret=' + clientSecret + '&' +
+    'categoryId=' + search + '&' +
+    'radius=' + radius + '&' +
+    'limit=50' +'&' +
+    'v=' + now;
+
+}
+
+
+  // var squareURL = 'https://api.foursquare.com/v2/venues/search?' +
+  //   'near='+ area + '&' +
+  //    // use + '?' +
+  //   // 'll=38.894470,-77.036583&' + // Washington DC Coord
+  //   'client_id=' + clientID + '&' +
+  //   'client_secret=' + clientSecret + '&' +
+  //   // 'categoryId=' + search + '&' +
+  //   'radius=' + radius + '&' +
+  //   'limit=50' +'&' +
+  //   'v=' + now;
   // Radius search term to improve results. Right now it might default to
   // something that is really small. Causing the cluster around white house.
 
