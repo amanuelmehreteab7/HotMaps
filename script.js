@@ -220,16 +220,16 @@ function deleteMarkers() {
 
 // Trigger search event
 
-$('#searchCity').on('click', function(event) {
-  console.log('searchCity Button - Clicked');
-  event.preventDefault();
-  area = $('#search').val().trim();
-  fscoordinates = []
-  $('#header').html('<h2>' + 'What is Happening in ' + area + '</h2>');
-  searchFourSquare()
-})
-$('#search').keypress(function(e){
-    if(e.which == 13){//Enter key pressed
-        $('#searchCity').click();//Trigger search button click event
+// Get the value of the search term
+$("#search").keypress(function(e) {
+    if(e.which == 13) {
+      event.preventDefault();
+      searchLocation = $("#search").val().trim();
+        console.log('search Location ' + searchLocation);
+
+        console.log('search ' + searchLocation);
+
+        // $("#searchDirections").hide();
+        // initMap();
     }
 });
