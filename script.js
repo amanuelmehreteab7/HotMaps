@@ -101,23 +101,36 @@ console.log(data);
 
     for (var i = 0; i < venues.length; i++) {
 
-      var name = venues[i].name;
-      // console.log('====log name===');
-      // console.log(name);
-      var cat = venues[i].categories[0].name;
-      var lat = venues[i].location.lat;
-      var lng = venues[i].location.lng;
-      var url = venues[i].url;
-      var hereNow = venues[i].hereNow.count;
-      var address = venues[i].location.address;
-      var id = venues[i].id;
-      var checkinsCount = venues[i].stats.checkinsCount;
-      var category_Id = venues[i].categories[0].id
+      if (typeof(venues[i].categories) === 'undefined' || venues[i].categories.length ==0){
+        var name = venues[i].name;
+        var cat = "still undefined";
+        var lat = venues[i].location.lat;
+        var lng = venues[i].location.lng;
+        var url = venues[i].url;
+        var hereNow = venues[i].hereNow.count;
+        var address = venues[i].location.address;
+        var id = venues[i].id;
+        var checkinsCount = 0;
+        var category_Id = "still undefined"
+
+      } else {
+
+        var name = venues[i].name;
+        var cat = venues[i].categories[0].name;
+        var lat = venues[i].location.lat;
+        var lng = venues[i].location.lng;
+        var url = venues[i].url;
+        var hereNow = venues[i].hereNow.count;
+        var address = venues[i].location.address;
+        var id = venues[i].id;
+        var checkinsCount = venues[i].stats.checkinsCount;
+        var category_Id = venues[i].categories[0].id
+      }
 
       var venue = new Venue(name, cat, lat, lng, url, hereNow, checkinsCount, category_Id);
 
-      // console.log('loging venue');
-      // console.log(venue);
+      console.log('loging venue');
+      console.log(venue);
 
       fscoordinates.push(venue);
       var latLng = {
