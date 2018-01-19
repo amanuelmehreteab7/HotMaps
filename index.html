@@ -20,6 +20,8 @@
 
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
 </head>
 
 <body>
@@ -60,35 +62,44 @@
 
     </div>
   </div>
-
-  <!-- Table -->
-  <div class="table">
-    <table class="responsive highlight striped" id="addRow">
-      <tr>
-        <th>Name</th>
-        <th>Number of people here</th>
-        <th>Address</th>
-        <th>URL</th>
-      </tr>
-  </div>
-
-  <!-- Chat box might got here -->
-  <!-- <div class="row section"> -->
-  <!-- </div> -->
-
-  <!--Import jQuery before materialize.js-->
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALhVNfaKgpvJuLqX6VuPljcwgUcEj_qHw&callback=initMap"></script>
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-  <script type="text/javascript" src="./category.js"></script>
-  <script type="text/javascript" src="./checkbox.js"></script>
-  <script type="text/javascript" src="./venue.js"></script>
-  <script type="text/javascript" src="./discovery.js"></script>
-  <script type="text/javascript" src="./script.js"></script>
-  <script type="text/javascript" src="./table.js"></script>
+  <!-- search bar -->
+    <div class="input-field">
+      <input id="search" type="search" placeholder="Type your City" required>
+      <br>
+      <a id='searchCity' value=1 class="waves-effect waves-light btn-large">Search</a>
+    </div>
 
 
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALhVNfaKgpvJuLqX6VuPljcwgUcEj_qHw&callback=initMap" async defer></script>
+
+
+    <!-- Table -->
+    <div class="table">
+      <table class="responsive highlight striped" id="addRow">
+        <tr>
+          <th>Name</th>
+          <th>Number of people here</th>
+          <th>Address</th>
+          <th>URL</th>
+        </tr>
+    </div>
+
+    <!-- Chat box might got here -->
+    <!-- <div class="row section"> -->
+    <!-- </div> -->
+
+    <!--Import jQuery before materialize.js-->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALhVNfaKgpvJuLqX6VuPljcwgUcEj_qHw&callback=initMap"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script type="text/javascript" src="./category.js"></script>
+    <script type="text/javascript" src="./checkbox.js"></script>
+    <script type="text/javascript" src="./venue.js"></script>
+    <script type="text/javascript" src="./discovery.js"></script>
+    <script type="text/javascript" src="./script.js"></script>
+    <script type="text/javascript" src="./table.js"></script>
+
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALhVNfaKgpvJuLqX6VuPljcwgUcEj_qHw&callback=initMap" async defer></script>
 </body>
 
 </html>
