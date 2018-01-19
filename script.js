@@ -83,7 +83,7 @@ if (search == undefined ) {
     url: squareURL,
     method: "GET"
   }).done(function(data) {
-
+console.log(data);
 //sorts the response by most hereNows
     sorted = data.response.venues.sort(function(a, b){
      return b.hereNow.count - a.hereNow.count;
@@ -99,12 +99,11 @@ if (search == undefined ) {
     // For each of the venue responses matching the city, loop through and create an array of objects
     var venues = data.response.venues;
 
-    // console.log('===venues======');
-    // console.log(venues);
-
     for (var i = 0; i < venues.length; i++) {
 
       var name = venues[i].name;
+      // console.log('====log name===');
+      // console.log(name);
       var cat = venues[i].categories[0].name;
       var lat = venues[i].location.lat;
       var lng = venues[i].location.lng;
@@ -117,8 +116,8 @@ if (search == undefined ) {
 
       var venue = new Venue(name, cat, lat, lng, url, hereNow, checkinsCount, category_Id);
 
-      console.log('loging venue');
-      console.log(venue);
+      // console.log('loging venue');
+      // console.log(venue);
 
       fscoordinates.push(venue);
       var latLng = {
@@ -232,4 +231,9 @@ $('#search').keypress(function(e){
     if(e.which == 13){//Enter key pressed
         $('#searchCity').click();//Trigger search button click event
     }
+});
+
+$(document).ready(function(){
+  // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+  $('.modal').modal();
 });
