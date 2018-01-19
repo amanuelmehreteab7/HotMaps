@@ -1,13 +1,14 @@
-var api_key = 'AIzaSyALhVNfaKgpvJuLqX6VuPljcwgUcEj_qHw'
+var api_key = 'AIzaSyALhVNfaKgpvJuLqX6VuPljcwgUcEj_qHw';
 var fscoordinates = []; //This will hold our array of objects which is the response from FourSquare
 var map;
 var markers = [];
 // var id;
-var sorted2
-var mapLat = 38.8961336
-var mapLgt = -77.0028392
-var area = 'Washington'
-var topTen = []
+var sorted2;
+var mapLat = 38.8961336;
+var mapLgt = -77.0028392;
+var area = 'Washington';
+var topTen = [];
+var squareURL;
 
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
@@ -38,7 +39,7 @@ console.log('a value');
 console.log(search);
 if (search == undefined ) {
 
-  var squareURL = 'https://api.foursquare.com/v2/venues/search?' +
+squareURL = 'https://api.foursquare.com/v2/venues/search?' +
     'near='+ area + '&' +
      // use + '?' +
     // 'll=38.894470,-77.036583&' + // Washington DC Coord
@@ -51,7 +52,7 @@ if (search == undefined ) {
 
 } else {
 
-  var squareURL = 'https://api.foursquare.com/v2/venues/search?' +
+  squareURL = 'https://api.foursquare.com/v2/venues/search?' +
     'near='+ area + '&' +
      // use + '?' +
     // 'll=38.894470,-77.036583&' + // Washington DC Coord
@@ -88,13 +89,13 @@ if (search == undefined ) {
     sorted = data.response.venues.sort(function(a, b){
      return b.hereNow.count - a.hereNow.count;
 
-    })
+   });
 
 //sorts the response by most hereNows
         sorted2 = data.response.venues.sort(function(a, b){
          return b.stats.checkinsCount - a.stats.checkinsCount;
 
-      })
+      });
 
     // For each of the venue responses matching the city, loop through and create an array of objects
     var venues = data.response.venues;
@@ -113,7 +114,7 @@ if (search == undefined ) {
       var address = venues[i].location.address;
       var id = venues[i].id;
       var checkinsCount = venues[i].stats.checkinsCount;
-      var category_Id = venues[i].categories[0].id
+      var category_Id = venues[i].categories[0].id;
 
       var venue = new Venue(name, cat, lat, lng, url, hereNow, checkinsCount, category_Id);
 
@@ -124,11 +125,11 @@ if (search == undefined ) {
       var latLng = {
         lat: fscoordinates[i].lat,
         lng: fscoordinates[i].lng
-      }
+      };
       addMarker(latLng, id);
       lint(name, hereNow, address, url);
 
-      updateTable(name, hereNow, address, url, id)
+      updateTable(name, hereNow, address, url, id);
 
 
     } // Completes the loop through add all responses to an array of objects
@@ -156,13 +157,13 @@ if (search == undefined ) {
 // create an array of object with unique category IDs
 
     var uniqueCategory = [];
-    uniqueCategory = _.uniqBy(fscoordinates, 'category_Id')
+    uniqueCategory = _.uniqBy(fscoordinates, 'category_Id');
 
 
     // select the top 10 categories
 
-    uniqueCategory.splice([9],uniqueCategory.length - 10)
-    topTen = uniqueCategory
+    uniqueCategory.splice([9],uniqueCategory.length - 10);
+    topTen = uniqueCategory;
     console.log('---Top Ten---');
     console.log(topTen);
 
@@ -177,7 +178,7 @@ function addMarker(latLng, id) {
     map: map,
     store_id: id
   });
-  markers.push(marker)
+  markers.push(marker);
   // console.log(marker.store_id);
 
   whyNot = (e)  => {
@@ -188,7 +189,7 @@ function addMarker(latLng, id) {
         google.maps.event.trigger(markers[i], 'click');
       }
   }
-  }
+};
 
 lint = (name , hereNow, address, url) => {
   marker.addListener('click', function() {
@@ -196,7 +197,7 @@ lint = (name , hereNow, address, url) => {
       // console.log(marker.store_id);
 
     });
-}
+};
 }
 
 // Sets the map on all markers in the array.
