@@ -25,62 +25,57 @@
 </head>
 
 <body>
-  <!-- Google Maps here -->
-  <div class="col m9" id="map">
+  <div class="row">
+
+    <!-- Adding the Side Nave -->
+    <div class="col s12 m4 l3">
+      <div>
+        <h1 class="logo"><em>HotMaps</em></h1>
+      </div>
+      <div>
+        <form id="cat" action="#"></form>
+      </div>
+    </div>
+
+<!-- Google Maps here -->
+    <div class="col s12 m8 l9"> <!-- Note that "m8 l9" was added -->
+      <div id="map">
+
+      </div>
+    </div>
+
+    <!-- Tap Target Structure -->
+
 
   </div>
 
-  <!-- Search -->
-
-  <!-- Fixed Side Nav -->
-  <ul id="slide-out" class="side-nav fixed">
-    <li>
-      <h1 class="logo"><em>HotMaps</em></h1>
-    </li>
-
-    <li>
-      <!-- Radio button here -->
-      <div class="col m3">
-        <form id="cat" action="#">
-
-        </form>
-      </div>
-    </li>
-  </ul>
-  <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
 
   <!-- Element Showed -->
-  <a id="menu" class="waves-effect waves-light btn btn-floating" style="display:none"><i class="material-icons">menu</i></a>
+    <a id="menu" class="waves-effect waves-light btn btn-floating" style="display:none"><i class="material-icons">menu</i></a>
 
-  <!-- Tap Target Structure -->
-  <div class="tap-target" data-activates="menu">
-    <div class="tap-target-content">
-      <h5 class="disoveryName">Title</h5>
-      <p class="disoveryHereNow">A bunch of text</p>
-      <p class="disoveryAddress">A bunch of text</p>
-      <p class="disoveryURL">A bunch of text</p>
+    <!-- Tap Target Structure -->
+    <div class="tap-target" data-activates="menu">
+      <div class="tap-target-content">
+        <h5 class="disoveryName">Title</h5>
+        <p class="disoveryHereNow">A bunch of text</p>
+        <p class="disoveryAddress">A bunch of text</p>
+        <p class="disoveryURL">A bunch of text</p>
 
+      </div>
     </div>
-  </div>
-  <!-- search bar -->
-    <div class="input-field">
-      <input id="search" type="search" placeholder="Type your City" required>
-      <br>
-      <a id='searchCity' value=1 class="waves-effect waves-light btn-large">Search</a>
-    </div>
-
-
 
 
     <!-- Table -->
-    <div class="table">
-      <table class="responsive highlight striped" id="addRow">
-        <tr>
-          <th>Name</th>
-          <th>Number of people here</th>
-          <th>Address</th>
-          <th>URL</th>
-        </tr>
+    <div class="row">
+      <div class="table">
+        <table class="responsive highlight striped" id="addRow">
+          <tr>
+            <th>Name</th>
+            <th>Number of people here</th>
+            <th>Address</th>
+            <th>URL</th>
+          </tr>
+      </div>
     </div>
 
     <!-- Chat box might got here -->
@@ -98,8 +93,6 @@
     <script type="text/javascript" src="./script.js"></script>
     <script type="text/javascript" src="./table.js"></script>
 
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALhVNfaKgpvJuLqX6VuPljcwgUcEj_qHw&callback=initMap" async defer></script>
 </body>
 
 </html>
