@@ -17,6 +17,7 @@ function initMap() {
   });
 }
 
+console.log("hello");
 //Creating a request to search four square
 // stop this function after we get all places.
 function searchFourSquare(search) {
