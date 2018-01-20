@@ -1,13 +1,7 @@
 
 #map {
-  height: 1000px;
+  height: 500px;
   width: 100%;
-}
-
-.searchNav {
-  position: absolute;
-  top: 50px;
-  z-index: 2;
 }
 
 html, body {
@@ -20,9 +14,8 @@ header, main, footer {
   padding-left: 300px;
 }
 
-@media only screen and (max-width: 600px) {
-  .searchNav {
-    position: absolute;
-    top: 400px;
-    z-index: 2;
+@media only screen and (max-width: 992px) {
+  header, main, footer {
+    padding-left: 0;
+  }
 }
