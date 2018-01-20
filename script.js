@@ -131,8 +131,9 @@ function searchCategories(places) {
 
 // triggered on button click
 function searchVenues(places) {
+  $('#addRow').empty()
   console.log('places: ', places);
-  for (var i = 0; i < places.length; i++) {
+  for (var i = 0; i < 10; i++) {
     var latLng = {
       lat: places[i].lat,
       lng: places[i].lng
