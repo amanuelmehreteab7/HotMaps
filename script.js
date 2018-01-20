@@ -199,6 +199,9 @@ $('#searchCity').on('click', function(event) {
 
 $('#search').keypress(function(e) {
   if (e.which == 13) { //Enter key pressed
+    event.preventDefault();
     $('#searchCity').click(); //Trigger search button click event
+    area = $("#search").val().trim();
+    console.log(area);
   }
 });
