@@ -140,7 +140,7 @@ function searchVenues(places) {
     }
     var categoryId = places[i].categoryId;
     var name = places[i].name;
-    var hereNow = places[i].name;
+    var hereNow = places[i].hereNow;
     var url = places[i].url;
     var address = places[i].address;
     var twitter = places[i].twitter;
@@ -148,7 +148,7 @@ function searchVenues(places) {
 
     addMarker(latLng, categoryId);
 
-    lint(name, hereNow, address, url, twitter);
+    lint(name, hereNow, address, url, categoryId, twitter);
 
     updateTable(name, hereNow, address, url, categoryId);
     // add
@@ -173,9 +173,9 @@ function addMarker(latLng, id) {
     }
   }
 
-  lint = (name, hereNow, address, url, twitter) => {
+  lint = (name, hereNow, address, url, id, twitter) => {
     marker.addListener('click', function() {
-      updateAndOpenDiscovery(name, hereNow, address, url);
+      updateAndOpenDiscovery(name, hereNow, address, url, id);
       updateTwitterTimeline(twitter);
       // console.log(marker.store_id);
 
