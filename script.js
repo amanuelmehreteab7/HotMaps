@@ -7,8 +7,6 @@ var area = 'Washington';
 var search;
 var searchBar = true;
 
-//Initialize Google Maps
-
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 12,
@@ -17,15 +15,7 @@ function initMap() {
       lng: mapLgt
     }
   });
-
-  //This is initiating the autocomplete feature on the search box
-  var input = document.getElementById('search');
-
-  // var autocomplete = new google.maps.places.Autocomplete(input)
-
 }
-
-
 
 //Creating a request to search four square
 // stop this function after we get all places.

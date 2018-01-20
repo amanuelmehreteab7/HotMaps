@@ -21,7 +21,6 @@
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-
 </head>
 
 <body>
@@ -35,13 +34,26 @@
       <div>
         <form id="cat" action="#"></form>
       </div>
+      <div>
+        <button id="searchCity" type="button" name="button">Temp Button [DC]</button>
+      </div>
     </div>
 
 <!-- Google Maps here -->
-    <div class="col s12 m8 l9"> <!-- Note that "m8 l9" was added -->
-      <div id="map">
+    <div class="col s12 m8 l9">
 
-      </div>
+      <!-- Adding the search bar -->
+      <nav class="col xl6 l6 m6 s9 offset-xl1 offset-l1 offset-m1 offset-s1 searchNav hoverable teal darken-1">
+        <div class="nav-wrapper  teal darken-1">
+          <form>
+            <div class="input-field">
+              <input class=" teal darken-1" id="search" type="text" required>
+              <!-- <label class="label-icon" for="search"><i class="material-icons">search</i></label> -->
+            </div>
+          </form>
+        </div>
+      </nav>
+        <div class="col s12" id="map"></div>
     </div>
 
     <!-- Tap Target Structure -->
@@ -51,47 +63,49 @@
 
 
   <!-- Element Showed -->
-    <a id="menu" class="waves-effect waves-light btn btn-floating" style="display:none"><i class="material-icons">menu</i></a>
+  <a id="menu" class="waves-effect waves-light btn btn-floating" style="display:none"><i class="material-icons">menu</i></a>
 
-    <!-- Tap Target Structure -->
-    <div class="tap-target" data-activates="menu">
-      <div class="tap-target-content">
-        <h5 class="disoveryName">Title</h5>
-        <p class="disoveryHereNow">A bunch of text</p>
-        <p class="disoveryAddress">A bunch of text</p>
-        <p class="disoveryURL">A bunch of text</p>
+  <!-- Tap Target Structure -->
+  <div class="tap-target" data-activates="menu">
+    <div class="tap-target-content">
+      <h5 class="disoveryName">Title</h5>
+      <p class="disoveryHereNow">A bunch of text</p>
+      <p class="disoveryAddress">A bunch of text</p>
+      <p class="disoveryURL">A bunch of text</p>
 
-      </div>
     </div>
+  </div>
 
 
-    <!-- Table -->
-    <div class="row">
-      <div class="table">
-        <table class="responsive highlight striped" id="addRow">
-          <tr>
-            <th>Name</th>
-            <th>Number of people here</th>
-            <th>Address</th>
-            <th>URL</th>
-          </tr>
-      </div>
+  <!-- Table -->
+  <div class="row">
+    <div class="table">
+      <table class="responsive highlight striped" id="addRow">
+        <tr>
+          <th>Name</th>
+          <th>Number of people here</th>
+          <th>Address</th>
+          <th>URL</th>
+        </tr>
     </div>
+  </div>
 
-    <!-- Chat box might got here -->
-    <!-- <div class="row section"> -->
-    <!-- </div> -->
+  <!-- Chat box might got here -->
+  <!-- <div class="row section"> -->
+  <!-- </div> -->
 
-    <!--Import jQuery before materialize.js-->
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALhVNfaKgpvJuLqX6VuPljcwgUcEj_qHw&callback=initMap"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <script type="text/javascript" src="./category.js"></script>
-    <script type="text/javascript" src="./checkbox.js"></script>
-    <script type="text/javascript" src="./venue.js"></script>
-    <script type="text/javascript" src="./discovery.js"></script>
-    <script type="text/javascript" src="./script.js"></script>
-    <script type="text/javascript" src="./table.js"></script>
+  <!--Import jQuery before materialize.js-->
+  <script src="lodash.js"></script>
+
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALhVNfaKgpvJuLqX6VuPljcwgUcEj_qHw&callback=initMap"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <script type="text/javascript" src="./category.js"></script>
+  <script type="text/javascript" src="./checkbox.js"></script>
+  <script type="text/javascript" src="./venue.js"></script>
+  <script type="text/javascript" src="./discovery.js"></script>
+  <script type="text/javascript" src="./script.js"></script>
+  <script type="text/javascript" src="./table.js"></script>
 
 </body>
 
