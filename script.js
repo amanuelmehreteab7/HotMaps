@@ -65,7 +65,7 @@ function searchFourSquare(search) {
 
     // For each of the venue responses matching the city, loop through and create an array of objects
     var venues = data.response.venues;
-
+    // console.log(venues);
     //sorts the response by most checkinsCount
     venues.sort(function(a, b) {
       return b.stats.checkinsCount - a.stats.checkinsCount;
@@ -82,9 +82,10 @@ function searchFourSquare(search) {
       var url = venues[i].url;
       var hereNow = venues[i].hereNow.count;
       var checkinsCount = venues[i].stats.checkinsCount;
-      var categoryId = venues[i].categories[0].id
-
-      var venue = new Venue(name, cat, lat, lng, address, venueId, url, hereNow, checkinsCount, categoryId);
+      var categoryId = venues[i].categories[0].id;
+      var twitter = venues[i].contact.twitter;
+      console.log(twitter)
+      var venue = new Venue(name, cat, lat, lng, address, venueId, url, hereNow, checkinsCount, categoryId, twitter);
 
       fscoordinates.push(venue);
     }
@@ -129,12 +130,15 @@ function searchVenues(places) {
     var hereNow = places[i].name;
     var url = places[i].url;
     var address = places[i].address;
+    var twitter = places[i].twitter;
+    console.log(twitter);
 
     addMarker(latLng, categoryId);
 
-    lint(name, hereNow, address, url);
+    lint(name, hereNow, address, url, twitter);
 
     updateTable(name, hereNow, address, url, categoryId);
+    // add
   }
 }
 
@@ -156,9 +160,10 @@ function addMarker(latLng, id) {
     }
   }
 
-  lint = (name, hereNow, address, url) => {
+  lint = (name, hereNow, address, url, twitter) => {
     marker.addListener('click', function() {
       updateAndOpenDiscovery(name, hereNow, address, url);
+      updateTwitterTimeline(twitter);
       // console.log(marker.store_id);
 
     });

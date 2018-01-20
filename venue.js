@@ -1,5 +1,5 @@
 class Venue {
-  constructor(name, cat, lat, lng, address, venueId, url, hereNow, checkinsCount, categoryId) {
+  constructor(name, cat, lat, lng, address, venueId, url, hereNow, checkinsCount, categoryId, twitter) {
     this.name = name;
     this.cat = cat;
     this.lat = lat;
@@ -10,5 +10,6 @@ class Venue {
     this.hereNow = hereNow;
     this.checkinsCount = checkinsCount;
     this.categoryId = categoryId;
-  }
+      this.twitter = twitter;
+    }
 }
