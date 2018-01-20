@@ -74,8 +74,19 @@ function searchFourSquare(search) {
 
     for (var i = 0; i < venues.length; i++) {
 
+      if (typeof(venues[i].categories) === 'undefined' || venues[i].categories.length ==0){
+        var cat = "still undefined";
+        var checkinsCount = 0;
+        var category_Id = "still undefined"
+
+      } else {
+
+        var cat = venues[i].categories[0].name;
+        var checkinsCount = venues[i].stats.checkinsCount;
+        var category_Id = venues[i].categories[0].id
+      }
+
       var name = venues[i].name;
-      var cat = venues[i].categories[0].name;
       var lat = venues[i].location.lat;
       var lng = venues[i].location.lng;
       var address = venues[i].location.address;
@@ -207,4 +218,9 @@ $('#search').keypress(function(e) {
   if (e.which == 13) { //Enter key pressed
     $('#searchCity').click(); //Trigger search button click event
   }
+});
+
+$(document).ready(function(){
+  // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+  $('.modal').modal();
 });
