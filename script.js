@@ -42,7 +42,7 @@ function searchFourSquare(search) {
       'client_id=' + clientID + '&' +
       'client_secret=' + clientSecret + '&' +
       'radius=' + radius + '&' +
-      'limit=50' + '&' +
+      'limit=20' + '&' +
       'v=' + now;
 
     // One search for category
@@ -53,7 +53,7 @@ function searchFourSquare(search) {
       'client_secret=' + clientSecret + '&' +
       'categoryId=' + search + '&' +
       'radius=' + radius + '&' +
-      'limit=50' + '&' +
+      'limit=20' + '&' +
       'v=' + now;
   }
   console.log('search: ', search);
@@ -66,6 +66,11 @@ function searchFourSquare(search) {
 
     // For each of the venue responses matching the city, loop through and create an array of objects
     var venues = data.response.venues;
+
+    //sorts the response by most checkinsCount
+    venues.sort(function(a, b) {
+      return b.stats.checkinsCount - a.stats.checkinsCount;
+    });
 
     for (var i = 0; i < venues.length; i++) {
 
@@ -94,7 +99,7 @@ function searchFourSquare(search) {
       //
       // updateTable(name, hereNow, address, url, categoryId)
     } // Completes the loop through add all responses to an array of objects
-
+    console.log(fscoordinates);
     // console.log('===fscoordinates======');
     // console.log(fscoordinates);
     //
@@ -135,7 +140,7 @@ function searchCategories(places) {
 
 // triggered on button click
 function searchVenues(places) {
-console.log('places: ', places);
+  console.log('places: ', places);
   for (var i = 0; i < places.length; i++) {
     var latLng = {
       lat: places[i].lat,
