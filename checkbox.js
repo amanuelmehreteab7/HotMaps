@@ -17,6 +17,7 @@ $(document).on("click", "input.cat", function() {
   deleteMarkers();
 
   searchFourSquare(searchId);
+  console.log("HEllo");
 });
 
 // Add button with search categoryID to data attribute

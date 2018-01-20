@@ -3,19 +3,20 @@ var map;
 var markers = [];
 var mapLat = 38.8961336;
 var mapLgt = -77.0028392;
-var area = 'Washington';
+var area;
 var search;
 var searchBar = true;
+var fscoordinates
 
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 12,
-    center: {
-      lat: mapLat,
-      lng: mapLgt
-    }
-  });
-}
+// function initMap() {
+//   map = new google.maps.Map(document.getElementById('map'), {
+//     zoom: 12,
+//     center: {
+//       lat: mapLat,
+//       lng: mapLgt
+//     }
+//   });
+// }
 
 //Creating a request to search four square
 // stop this function after we get all places.
@@ -89,7 +90,6 @@ function searchFourSquare(search) {
       fscoordinates.push(venue);
     }
 
-    console.log(fscoordinates);
 
     if (searchBar === true) {
       searchCategories(fscoordinates);
@@ -124,6 +124,7 @@ function searchVenues(places) {
       lat: places[i].lat,
       lng: places[i].lng
     }
+    console.log(places)
     var categoryId = places[i].categoryId;
     var name = places[i].name;
     var hereNow = places[i].name;
@@ -140,6 +141,7 @@ function searchVenues(places) {
 
 // Adds a marker to the map and push to the array.
 function addMarker(latLng, id) {
+
   var marker = new google.maps.Marker({
     position: latLng,
     map: map,
@@ -169,6 +171,7 @@ function addMarker(latLng, id) {
 function setMapOnAll(map) {
   for (var i = 0; i < markers.length; i++) {
     markers[i].setMap(map);
+    console.log("Hello");
   }
 }
 
@@ -191,17 +194,86 @@ $('#searchCity').on('click', function(event) {
   event.preventDefault();
 
   // area = $('#search').val().trim();
-  area = 'Washington';
+  // area = 'Washington';
 
   searchFourSquare(search);
   // searchCategories(places);
 })
 
-$('#search').keypress(function(e) {
-  if (e.which == 13) { //Enter key pressed
-    event.preventDefault();
-    $('#searchCity').click(); //Trigger search button click event
-    area = $("#search").val().trim();
-    console.log(area);
-  }
+function initAutocomplete() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -33.8688, lng: 151.2195},
+    zoom: 13,
+    mapTypeId: 'roadmap'
+  });
+
+  // Create the search box and link it to the UI element.
+  var input = document.getElementById('pac-input');
+  var searchBox = new google.maps.places.SearchBox(input);
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+  // Bias the SearchBox results towards current map's viewport.
+  map.addListener('bounds_changed', function() {
+    searchBox.setBounds(map.getBounds());
+  });
+
+  // var markers = [];
+  // Listen for the event fired when the user selects a prediction and retrieve
+  // more details for that place.
+  searchBox.addListener('places_changed', function() {
+    var places = searchBox.getPlaces();
+
+    if (places.length == 0) {
+      return;
+    }
+
+    // // Clear out the old markers.
+    // markers.forEach(function(marker) {
+    //   marker.setMap(null);
+    // });
+    //
+
+    // For each place, get the icon, name and location.
+    var bounds = new google.maps.LatLngBounds();
+    places.forEach(function(place) {
+      if (!place.geometry) {
+        console.log("Returned place contains no geometry");
+        return;
+      }
+      // var icon = {
+      //   url: place.icon,
+      //   size: new google.maps.Size(71, 71),
+      //   origin: new google.maps.Point(0, 0),
+      //   anchor: new google.maps.Point(17, 34),
+      //   scaledSize: new google.maps.Size(25, 25)
+      // };
+
+      // Create a marker for each place.
+      // markers.push(new google.maps.Marker({
+      //   map: map,
+      //   icon: icon,
+      //   title: place.name,
+      //   position: place.geometry.location
+      // }));
+
+      if (place.geometry.viewport) {
+        // Only geocodes have viewport.
+        bounds.union(place.geometry.viewport);
+      } else {
+        bounds.extend(place.geometry.location);
+      }
+    });
+    map.fitBounds(bounds);
+  });
+}
+
+$("#pac-input").keypress(function(e) {
+    if(e.which == 13) {
+      event.preventDefault();
+      area = $("#pac-input").val().trim();
+console.log(searchBar);
+
+        // $("#searchDirections").hide();
+        // initMap();
+    }
 });

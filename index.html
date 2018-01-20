@@ -47,7 +47,8 @@
         <div class="nav-wrapper  teal darken-1">
           <form>
             <div class="input-field">
-              <input class=" teal darken-1" id="search" type="text" required>
+              <!-- <input id="search" class="controls teal darken-1" type="text" placeholder="Search Box"> -->
+              <input id="pac-input" class="controls" type="text" placeholder="Search Box">
               <!-- <label class="label-icon" for="search"><i class="material-icons">search</i></label> -->
             </div>
           </form>
@@ -96,14 +97,16 @@
 
   <!--Import jQuery before materialize.js-->
   <script src="lodash.js"></script>
-
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALhVNfaKgpvJuLqX6VuPljcwgUcEj_qHw&callback=initMap"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALhVNfaKgpvJuLqX6VuPljcwgUcEj_qHw&libraries=places&callback=initAutocomplete"
+         async defer></script>
+  <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALhVNfaKgpvJuLqX6VuPljcwgUcEj_qHw&callback=initMap"></script> -->
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
   <script type="text/javascript" src="./category.js"></script>
   <script type="text/javascript" src="./checkbox.js"></script>
   <script type="text/javascript" src="./venue.js"></script>
   <script type="text/javascript" src="./discovery.js"></script>
+  <script type="text/javascript" src="./mapSearch.js"></script>
   <script type="text/javascript" src="./script.js"></script>
   <script type="text/javascript" src="./table.js"></script>
 
