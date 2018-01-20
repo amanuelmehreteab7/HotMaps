@@ -56,7 +56,6 @@ function searchFourSquare(search) {
       'limit=20' + '&' +
       'v=' + now;
   }
-  console.log('search: ', search);
 
   //Making a call to the url for the city in order to display the popular locations
   $.ajax({
@@ -88,30 +87,10 @@ function searchFourSquare(search) {
       var venue = new Venue(name, cat, lat, lng, address, venueId, url, hereNow, checkinsCount, categoryId);
 
       fscoordinates.push(venue);
+    }
 
-      // var latLng = {
-      //   lat: lat,
-      //   lng: lng
-      // }
-      // addMarker(latLng, categoryId);
-      //
-      // lint(name, hereNow, address, url);
-      //
-      // updateTable(name, hereNow, address, url, categoryId)
-    } // Completes the loop through add all responses to an array of objects
     console.log(fscoordinates);
-    // console.log('===fscoordinates======');
-    // console.log(fscoordinates);
-    //
-    // // create an array of object with unique category IDs
-    // var uniqueCategory = [];
-    // uniqueCategory = _.uniqBy(fscoordinates, 'categoryId')
-    //
-    // // select the top 10 categories
-    // uniqueCategory.splice([9], uniqueCategory.length - 10)
-    // topTen = uniqueCategory
-    // console.log('---Top Ten---');
-    // console.log(topTen);
+
     if (searchBar === true) {
       searchCategories(fscoordinates);
 
@@ -121,7 +100,6 @@ function searchFourSquare(search) {
 
     }
   }); // Completes the function that pulls down the response
-
 } // Completes the entire function that searches foursquare
 
 // triggered on search
@@ -167,7 +145,7 @@ function addMarker(latLng, id) {
     map: map,
     store_id: id
   });
-  markers.push(marker)
+  markers.push(marker);
   // console.log(marker.store_id);
 
   whyNot = (e) => {
