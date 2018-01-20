@@ -23,4 +23,4 @@
     id: '4bf58dd8d48988d1fa941735'
   }
 
-  var categories = [cat1, cat2, cat3, cat4, cat5, cat6];
+  // var categories = [cat1, cat2, cat3, cat4, cat5, cat6];

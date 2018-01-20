@@ -1,33 +1,38 @@
 // Initialize checkboxes
 var catId = $('#cat');
-for (var i = 0; i < categories.length; i++) {
-  addCheckBox(categories[i]);
+
+function allBtns(categories) {
+
+  for (var i = 0; i < categories.length; i++) {
+    oneRadioBtn(categories[i]);
+  }
 }
 
 // On click search for 'button that was clicked'
-$('.cat').change(function() {
+$(document).on("click", "input.cat", function() {
+  searchBar = false;
+
   var searchId = $(this).attr('data-cat-id');
 
-  $('.delete').empty();
   deleteMarkers();
-  searchFourSquare(searchId);
 
+  searchFourSquare(searchId);
 });
 
-// Add checkbox with search categoryID to data attribute
-function addCheckBox(place) {
+// Add button with search categoryID to data attribute
+function oneRadioBtn(place) {
 
   var pTag = $('<p>');
 
   var input = $('<input type="radio"/>');
-  input.attr('id', place.name);
-  input.attr('data-cat-id', place.id);
+  input.attr('id', place.cat);
+  input.attr('data-cat-id', place.categoryId);
   input.attr('name', 'group-cat')
   input.addClass('cat');
 
   var label = $('<label>');
-  label.attr('for', place.name);
-  label.text(place.name);
+  label.attr('for', place.cat);
+  label.text(place.cat);
 
   pTag.append(input);
   pTag.append(label);
