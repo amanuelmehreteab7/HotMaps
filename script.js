@@ -144,7 +144,7 @@ function searchVenues(places) {
 // Adds a marker to the map and push to the array.
 
 function addMarker(latLng, id, number) {
-  var colorGradient = ['#F086A2','#DE809F','#CD7B9D','#BC759A','#AB7098','#9A6B96','#896593','#786091','#58568C','#45508A'];
+  var colorGradient = ['#F086A2', '#DE809F', '#CD7B9D', '#BC759A', '#AB7098', '#9A6B96', '#896593', '#786091', '#58568C', '#45508A'];
   var icon = {
     path: 'M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z',
     fillColor: colorGradient[number],
@@ -199,23 +199,12 @@ function deleteMarkers() {
   markers = [];
 }
 
-// searching for city triggers location change on map and generating of categories
-// Trigger search event
-$('#searchCity').on('click', function(event) {
-  searchBar = true;
-  event.preventDefault();
-
-  // area = $('#search').val().trim();
-  // area = 'Washington';
-
-  searchFourSquare(search);
-  // searchCategories(places);
-})
-
-
 function initAutocomplete() {
-   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 38.8961336, lng: -77.0028392},
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {
+      lat: 38.8961336,
+      lng: -77.0028392
+    },
     zoom: 13,
     mapTypeId: 'roadmap'
   });
@@ -254,11 +243,25 @@ function initAutocomplete() {
   }); //Closing the anonymous function that looks for the search
 } // Close initAutocomplete function
 
+// searching for city triggers location change on map and generating of categories
+// Trigger search event
+$('#searchBtn').on('click', function(event) {
+  searchBar = true;
+  event.preventDefault();
+  
+  // clear existing buttons
+  catId.empty();
+
+  area = $("#search").val().trim();
+
+  searchFourSquare(search);
+})
+
 $("#search").keypress(function(e) {
-    if(e.which == 13) {
-      event.preventDefault();
-      area = $("#search").val().trim();
-    }
+  if (e.which == 13) {
+    event.preventDefault();
+    $('#searchBtn').click()
+  }
 });
 
 $(document).ready(function() {
