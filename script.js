@@ -13,7 +13,8 @@ function initMap() {
     center: {
       lat: mapLat,
       lng: mapLgt
-    }
+    },
+    styles: mapStyles
   });
 }
 
