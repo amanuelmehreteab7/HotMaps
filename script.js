@@ -1,21 +1,13 @@
-var api_key = 'AIzaSyALhVNfaKgpvJuLqX6VuPljcwgUcEj_qHw'
+var googleApi_key = 'AIzaSyALhVNfaKgpvJuLqX6VuPljcwgUcEj_qHw'
 var map;
 var markers = [];
 var mapLat = 38.8961336;
 var mapLgt = -77.0028392;
-var area = 'Washington';
+var area;
 var search;
 var searchBar = true;
+var fscoordinates;
 
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 12,
-    center: {
-      lat: mapLat,
-      lng: mapLgt
-    }
-  });
-}
 
 console.log("hello");
 //Creating a request to search four square
@@ -102,13 +94,12 @@ function searchFourSquare(search) {
       fscoordinates.push(venue);
     }
 
-    console.log(fscoordinates);
 
     if (searchBar === true) {
       searchCategories(fscoordinates);
 
     } else {
-      console.log('fscoord: ', fscoordinates);
+
       searchVenues(fscoordinates);
 
     }
@@ -138,6 +129,7 @@ function searchVenues(places) {
       lat: places[i].lat,
       lng: places[i].lng
     }
+    console.log(places)
     var categoryId = places[i].categoryId;
     var name = places[i].name;
     var hereNow = places[i].name;
@@ -156,6 +148,9 @@ function searchVenues(places) {
 }
 
 // Adds a marker to the map and push to the array.
+
+function addMarker(latLng, id) {
+
 function addMarker(latLng, id, number) {
   var colorGradient = ['#F086A2','#DE809F','#CD7B9D','#BC759A','#AB7098','#9A6B96','#896593','#786091','#58568C','#45508A'];
   var icon = {
@@ -166,7 +161,6 @@ function addMarker(latLng, id, number) {
     strokeColor: colorGradient[number]
     // strokeWeight: 14
   }
-
 
   var marker = new google.maps.Marker({
     position: latLng,
@@ -200,6 +194,7 @@ function addMarker(latLng, id, number) {
 function setMapOnAll(map) {
   for (var i = 0; i < markers.length; i++) {
     markers[i].setMap(map);
+    console.log("Hello");
   }
 }
 
@@ -222,16 +217,60 @@ $('#searchCity').on('click', function(event) {
   event.preventDefault();
 
   // area = $('#search').val().trim();
-  area = 'Washington';
+  // area = 'Washington';
 
   searchFourSquare(search);
   // searchCategories(places);
 })
 
-$('#search').keypress(function(e) {
-  if (e.which == 13) { //Enter key pressed
-    $('#searchCity').click(); //Trigger search button click event
-  }
+
+function initAutocomplete() {
+   map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 38.8961336, lng: -77.0028392},
+    zoom: 13,
+    mapTypeId: 'roadmap'
+  });
+
+  // Create the search box and link it to the UI element.
+  var input = document.getElementById('search');
+  var searchBox = new google.maps.places.SearchBox(input);
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+
+  // Listen for the event fired when the user selects a prediction and retrieve
+  // more details for that place.
+  searchBox.addListener('places_changed', function() {
+    var places = searchBox.getPlaces();
+    console.log(places);
+    if (places.length == 0) {
+      return;
+    }
+
+
+    // For each place, get the location.
+    var bounds = new google.maps.LatLngBounds();
+    places.forEach(function(place) {
+      if (!place.geometry) {
+        console.log("Returned place contains no geometry");
+        return;
+      }
+
+      if (place.geometry.viewport) {
+        // Only geocodes have viewport.
+        bounds.union(place.geometry.viewport);
+      } else {
+        bounds.extend(place.geometry.location);
+      }
+    }); //Closing the function that returns the location on the map
+    map.fitBounds(bounds);
+  }); //Closing the anonymous function that looks for the search
+} // Close initAutocomplete function
+
+$("#search").keypress(function(e) {
+    if(e.which == 13) {
+      event.preventDefault();
+      area = $("#search").val().trim();
+    }
 });
 
 $(document).ready(function() {

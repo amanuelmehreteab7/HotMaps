@@ -4,11 +4,11 @@
   width: 100%;
 }
 
-.searchNav {
+/*.searchNav {
   position: absolute;
   top: 50px;
   z-index: 2;
-}
+}*/
 
 html, body {
   height: 100%;
