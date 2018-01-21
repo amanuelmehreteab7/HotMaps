@@ -9,6 +9,7 @@ var searchBar = true;
 var fscoordinates;
 
 
+console.log("hello");
 //Creating a request to search four square
 // stop this function after we get all places.
 function searchFourSquare(search) {
@@ -57,7 +58,7 @@ function searchFourSquare(search) {
 
     // For each of the venue responses matching the city, loop through and create an array of objects
     var venues = data.response.venues;
-
+    // console.log(venues);
     //sorts the response by most checkinsCount
     venues.sort(function(a, b) {
       return b.stats.checkinsCount - a.stats.checkinsCount;
@@ -65,8 +66,19 @@ function searchFourSquare(search) {
 
     for (var i = 0; i < venues.length; i++) {
 
+      if (typeof(venues[i].categories) === 'undefined' || venues[i].categories.length == 0) {
+        var cat = "still undefined";
+        var checkinsCount = 0;
+        var category_Id = "still undefined"
+
+      } else {
+
+        var cat = venues[i].categories[0].name;
+        var checkinsCount = venues[i].stats.checkinsCount;
+        var category_Id = venues[i].categories[0].id
+      }
+
       var name = venues[i].name;
-      var cat = venues[i].categories[0].name;
       var lat = venues[i].location.lat;
       var lng = venues[i].location.lng;
       var address = venues[i].location.address;
@@ -74,9 +86,10 @@ function searchFourSquare(search) {
       var url = venues[i].url;
       var hereNow = venues[i].hereNow.count;
       var checkinsCount = venues[i].stats.checkinsCount;
-      var categoryId = venues[i].categories[0].id
-
-      var venue = new Venue(name, cat, lat, lng, address, venueId, url, hereNow, checkinsCount, categoryId);
+      var categoryId = venues[i].categories[0].id;
+      var twitter = venues[i].contact.twitter;
+      console.log(twitter)
+      var venue = new Venue(name, cat, lat, lng, address, venueId, url, hereNow, checkinsCount, categoryId, twitter);
 
       fscoordinates.push(venue);
     }
@@ -109,8 +122,9 @@ function searchCategories(places) {
 
 // triggered on button click
 function searchVenues(places) {
+  $('#addRow').empty()
   console.log('places: ', places);
-  for (var i = 0; i < places.length; i++) {
+  for (var i = 0; i < 10; i++) {
     var latLng = {
       lat: places[i].lat,
       lng: places[i].lng
@@ -121,21 +135,38 @@ function searchVenues(places) {
     var hereNow = places[i].name;
     var url = places[i].url;
     var address = places[i].address;
+    var twitter = places[i].twitter;
+    console.log(twitter);
 
-    addMarker(latLng, categoryId);
+    addMarker(latLng, categoryId, i);
 
-    lint(name, hereNow, address, url);
+    lint(name, hereNow, address, url, twitter);
 
     updateTable(name, hereNow, address, url, categoryId);
+    // add
   }
 }
 
 // Adds a marker to the map and push to the array.
+
 function addMarker(latLng, id) {
+
+function addMarker(latLng, id, number) {
+  var colorGradient = ['#F086A2','#DE809F','#CD7B9D','#BC759A','#AB7098','#9A6B96','#896593','#786091','#58568C','#45508A'];
+  var icon = {
+    path: 'M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z',
+    fillColor: colorGradient[number],
+    fillOpacity: 1,
+    scale: 0.6,
+    strokeColor: colorGradient[number]
+    // strokeWeight: 14
+  }
 
   var marker = new google.maps.Marker({
     position: latLng,
     map: map,
+    icon: icon,
+    // label: number.toString(),
     store_id: id
   });
   markers.push(marker);
@@ -149,9 +180,10 @@ function addMarker(latLng, id) {
     }
   }
 
-  lint = (name, hereNow, address, url) => {
+  lint = (name, hereNow, address, url, twitter) => {
     marker.addListener('click', function() {
       updateAndOpenDiscovery(name, hereNow, address, url);
+      updateTwitterTimeline(twitter);
       // console.log(marker.store_id);
 
     });
@@ -239,4 +271,9 @@ $("#search").keypress(function(e) {
       event.preventDefault();
       area = $("#search").val().trim();
     }
+});
+
+$(document).ready(function() {
+  // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+  $('.modal').modal();
 });
