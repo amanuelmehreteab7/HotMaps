@@ -9,7 +9,7 @@ function allBtns(categories) {
 }
 
 // On click search for 'button that was clicked'
-$(document).on("click", "input.cat", function() {
+$(document).on('click', 'input.cat', function() {
   searchBar = false;
 
   var searchId = $(this).attr('data-cat-id');
