@@ -74,8 +74,19 @@ function searchFourSquare(search) {
 
     for (var i = 0; i < venues.length; i++) {
 
+      if (typeof(venues[i].categories) === 'undefined' || venues[i].categories.length ==0){
+        var cat = "still undefined";
+        var checkinsCount = 0;
+        var category_Id = "still undefined"
+
+      } else {
+
+        var cat = venues[i].categories[0].name;
+        var checkinsCount = venues[i].stats.checkinsCount;
+        var category_Id = venues[i].categories[0].id
+      }
+
       var name = venues[i].name;
-      var cat = venues[i].categories[0].name;
       var lat = venues[i].location.lat;
       var lng = venues[i].location.lng;
       var address = venues[i].location.address;
@@ -120,15 +131,16 @@ function searchCategories(places) {
 
 // triggered on button click
 function searchVenues(places) {
+  $('#addRow').empty()
   console.log('places: ', places);
-  for (var i = 0; i < places.length; i++) {
+  for (var i = 0; i < 10; i++) {
     var latLng = {
       lat: places[i].lat,
       lng: places[i].lng
     }
     var categoryId = places[i].categoryId;
     var name = places[i].name;
-    var hereNow = places[i].name;
+    var hereNow = places[i].hereNow;
     var url = places[i].url;
     var address = places[i].address;
     var twitter = places[i].twitter;
@@ -136,7 +148,7 @@ function searchVenues(places) {
 
     addMarker(latLng, categoryId);
 
-    lint(name, hereNow, address, url, twitter);
+    lint(name, hereNow, address, url, categoryId, twitter);
 
     updateTable(name, hereNow, address, url, categoryId);
     // add
@@ -161,9 +173,9 @@ function addMarker(latLng, id) {
     }
   }
 
-  lint = (name, hereNow, address, url, twitter) => {
+  lint = (name, hereNow, address, url, id, twitter) => {
     marker.addListener('click', function() {
-      updateAndOpenDiscovery(name, hereNow, address, url);
+      updateAndOpenDiscovery(name, hereNow, address, url, id);
       updateTwitterTimeline(twitter);
       // console.log(marker.store_id);
 
@@ -207,4 +219,9 @@ $('#search').keypress(function(e) {
   if (e.which == 13) { //Enter key pressed
     $('#searchCity').click(); //Trigger search button click event
   }
+});
+
+$(document).ready(function(){
+  // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+  $('.modal').modal();
 });
