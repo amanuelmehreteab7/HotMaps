@@ -199,20 +199,6 @@ function deleteMarkers() {
   markers = [];
 }
 
-// searching for city triggers location change on map and generating of categories
-// Trigger search event
-$('#searchCity').on('click', function(event) {
-  searchBar = true;
-  event.preventDefault();
-
-  // area = $('#search').val().trim();
-  // area = 'Washington';
-
-  searchFourSquare(search);
-  // searchCategories(places);
-})
-
-
 function initAutocomplete() {
    map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 38.8961336, lng: -77.0028392},
@@ -254,10 +240,20 @@ function initAutocomplete() {
   }); //Closing the anonymous function that looks for the search
 } // Close initAutocomplete function
 
+// searching for city triggers location change on map and generating of categories
+// Trigger search event
+$('#searchBtn').on('click', function(event) {
+  searchBar = true;
+  event.preventDefault();
+  area = $("#search").val().trim();
+
+  searchFourSquare(search);
+})
+
 $("#search").keypress(function(e) {
     if(e.which == 13) {
       event.preventDefault();
-      area = $("#search").val().trim();
+      $('#searchBtn').click()
     }
 });
 
