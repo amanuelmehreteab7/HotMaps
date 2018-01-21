@@ -9,7 +9,7 @@ function allBtns(categories) {
 }
 
 // On click search for 'button that was clicked'
-$(document).on("click", "input.cat", function() {
+$(document).on('click', 'input.cat', function() {
   searchBar = false;
 
   var searchId = $(this).attr('data-cat-id');
@@ -32,8 +32,12 @@ function oneRadioBtn(place) {
 
   var label = $('<label>');
   label.attr('for', place.cat);
-  label.text(place.cat);
+  label.addClass('txt-purple');
 
+  var strongTag = $('<strong>');
+  strongTag.text(place.cat);
+
+  label.append(strongTag);
   pTag.append(input);
   pTag.append(label);
   catId.append(pTag);

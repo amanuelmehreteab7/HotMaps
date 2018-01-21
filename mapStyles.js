@@ -23,6 +23,7 @@ var mapStyles = [{
       color: '#d59563'
     }]
   },
+  // Park
   {
     featureType: 'poi',
     elementType: 'labels.text.fill',
@@ -44,6 +45,7 @@ var mapStyles = [{
       color: '#6b9a76'
     }]
   },
+  // Roadways
   {
     featureType: 'road',
     elementType: 'geometry',
@@ -86,6 +88,7 @@ var mapStyles = [{
       color: '#f3d19c'
     }]
   },
+  // Transit
   {
     featureType: 'transit',
     elementType: 'geometry',
@@ -100,6 +103,7 @@ var mapStyles = [{
       color: '#d59563'
     }]
   },
+  // Water
   {
     featureType: 'water',
     elementType: 'geometry',
@@ -119,6 +123,28 @@ var mapStyles = [{
     elementType: 'labels.text.stroke',
     stylers: [{
       color: '#17263c'
+    }]
+  },
+  // Turn labels off
+  {
+    featureType: 'landscape.natural.terrain',
+    elementType: 'geometry',
+    stylers: [{
+      visibility: 'off'
+    }]
+  },
+  {
+    featureType: 'poi',
+    elementType: 'labels',
+    stylers: [{
+      visibility: 'off'
+    }]
+  },
+  {
+    featureType: 'poi.business',
+    elementType: 'all',
+    stylers: [{
+      visibility: 'off'
     }]
   }
 ]
