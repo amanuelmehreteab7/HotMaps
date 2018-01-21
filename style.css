@@ -27,3 +27,9 @@ html, body {
 header, main, footer {
   padding-left: 300px;
 }
+
+#twitter{
+  padding-top: 125px;
+  z-index:5000;
+  position:absolute;
+}

@@ -173,13 +173,15 @@ function addMarker(latLng, id, number) {
 
   lint = (name, hereNow, address, url, twitter) => {
     marker.addListener('click', function() {
-      updateAndOpenDiscovery(name, hereNow, address, url);
-      updateTwitterTimeline(twitter);
+      setTimeout( function() {
+        updateAndOpenDiscovery(name, hereNow, address, url);
+        updateTwitterTimeline(twitter);
 
-    });
-  }
+
+    }, 100 );
+  });
 }
-
+}
 // Sets the map on all markers in the array.
 function setMapOnAll(map) {
   for (var i = 0; i < markers.length; i++) {
@@ -248,7 +250,7 @@ function initAutocomplete() {
 $('#searchBtn').on('click', function(event) {
   searchBar = true;
   event.preventDefault();
-  
+
   // clear existing buttons
   catId.empty();
 
@@ -268,3 +270,7 @@ $(document).ready(function() {
   // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
   $('.modal').modal();
 });
+
+$(window).click(function () {
+  restoreCat();
+})
