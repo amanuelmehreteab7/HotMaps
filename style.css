@@ -1,14 +1,22 @@
 
 #map {
-  height: 1000px;
+  height: 700px;
   width: 100%;
 }
 
-/*.searchNav {
-  position: absolute;
-  top: 50px;
-  z-index: 2;
-}*/
+.searchBox {
+  color: white;
+}
+#search {
+  padding-left: 10px;
+}
+#search:hover{
+  font-size: 150%;
+}
+
+.pac-item-query:hover  {
+  font-size: 150%;
+}
 
 html, body {
   height: 100%;
@@ -18,11 +26,4 @@ html, body {
 
 header, main, footer {
   padding-left: 300px;
-}
-
-@media only screen and (max-width: 600px) {
-  .searchNav {
-    position: absolute;
-    top: 400px;
-    z-index: 2;
 }
