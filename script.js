@@ -1,4 +1,4 @@
-var api_key = 'AIzaSyALhVNfaKgpvJuLqX6VuPljcwgUcEj_qHw'
+var googleApi_key = 'AIzaSyALhVNfaKgpvJuLqX6VuPljcwgUcEj_qHw'
 var map;
 var markers = [];
 var mapLat = 38.8961336;
@@ -6,17 +6,8 @@ var mapLgt = -77.0028392;
 var area;
 var search;
 var searchBar = true;
-var fscoordinates
+var fscoordinates;
 
-// function initMap() {
-//   map = new google.maps.Map(document.getElementById('map'), {
-//     zoom: 12,
-//     center: {
-//       lat: mapLat,
-//       lng: mapLgt
-//     }
-//   });
-// }
 
 //Creating a request to search four square
 // stop this function after we get all places.
