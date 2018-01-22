@@ -24,31 +24,30 @@
 </head>
 
 <body>
-  <div class="row" id="wrapper">
+  <div class="row lt-blue-bg" id="wrapper">
 
     <!-- Adding the Side Nave -->
     <div class="col s12 m4 l3 ok">
       <div>
-        <h1 class="logo"><em>HotMaps</em></h1>
+        <h1 class="logo orange-txt"><em>HotMaps</em></h1>
       </div>
 
       <div>
         <form id="cat" action="#"></form>
       </div>
-      <div>
+      <!-- <div>
         <button id="searchBtn" type="button" name="button">Submit</button>
-      </div>
+      </div> -->
       <div id="twitter">
       </div>
     </div>
 
-<!-- Google Maps here -->
+    <!-- Google Maps here -->
     <div class="col s12 m8 l9">
 
       <!-- Adding the search bar -->
 
       <input class="hoverable searchBox teal darken-1 col xl8 l8 m8 s10" id="search" type="text" placeholder="Search for a city" required>
-
 
       <!-- <input id="search" class="controls col xl6 l6 m6 s9 offset-xl1 offset-l1 offset-m1 offset-s1 searchNav hoverable teal darken-1" type="text" placeholder="Search Box"> -->
 
@@ -57,7 +56,7 @@
 
     <!-- Tap Target Structure -->
 
-<!-- Close Row -->
+    <!-- Close Row -->
   </div>
 
   <div>
@@ -78,32 +77,31 @@
 
   <!-- Tap Target Structure -->
 
-    <!-- Modal Trigger -->
-    <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Top Places</a>
+  <!-- Modal Trigger -->
+  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Top Places</a>
 
-    <!-- Modal Structure -->
-    <div id="modal1" class="modal bottom-sheet">
-      <div class="modal-content">
-        <!-- Table -->
-        <div class="table">
-          <table class="responsive highlight striped" id="addRow">
-            <tr>
-              <th>Name</th>
-              <th>Number of people here</th>
-              <th>Address</th>
-              <th>URL</th>
-            </tr>
-        </div>
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal bottom-sheet">
+    <div class="modal-content">
+      <!-- Table -->
+      <div class="table">
+        <table class="responsive highlight striped" id="addRow">
+          <tr>
+            <th>Name</th>
+            <th>Number of people here</th>
+            <th>Address</th>
+            <th>URL</th>
+          </tr>
       </div>
     </div>
+  </div>
 
 
   <!-- Chat box might got here -->
 
   <!--Import jQuery before materialize.js-->
   <script src="lodash.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALhVNfaKgpvJuLqX6VuPljcwgUcEj_qHw&libraries=places&callback=initAutocomplete"
-         async defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALhVNfaKgpvJuLqX6VuPljcwgUcEj_qHw&libraries=places&callback=initAutocomplete" async defer></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
   <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -111,6 +109,7 @@
   <script type="text/javascript" src="./checkbox.js"></script>
   <script type="text/javascript" src="./venue.js"></script>
   <script type="text/javascript" src="./discovery.js"></script>
+  <script type="text/javascript" src="./mapStyleHot.js"></script>
   <script type="text/javascript" src="./script.js"></script>
   <script type="text/javascript" src="./table.js"></script>
   <script type="text/javascript" src="./twitter.js"></script>

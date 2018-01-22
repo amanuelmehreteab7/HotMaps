@@ -67,13 +67,13 @@ function searchFourSquare(search) {
       if (typeof(venues[i].categories) === 'undefined' || venues[i].categories.length == 0) {
         var cat = "still undefined";
         var checkinsCount = 0;
-        var category_Id = "still undefined"
+        var categoryId = "still undefined"
 
       } else {
 
         var cat = venues[i].categories[0].name;
         var checkinsCount = venues[i].stats.checkinsCount;
-        var category_Id = venues[i].categories[0].id
+        var categoryId = venues[i].categories[0].id
       }
 
       var name = venues[i].name;
@@ -84,7 +84,7 @@ function searchFourSquare(search) {
       var url = venues[i].url;
       var hereNow = venues[i].hereNow.count;
       var checkinsCount = venues[i].stats.checkinsCount;
-      var categoryId = venues[i].categories[0].id;
+      // var categoryId = venues[i].categories[0].id;
       var twitter = venues[i].contact.twitter;
       var venue = new Venue(name, cat, lat, lng, address, venueId, url, hereNow, checkinsCount, categoryId, twitter);
 
@@ -120,7 +120,7 @@ function searchCategories(places) {
 // triggered on button click
 function searchVenues(places) {
   $('#addRow').empty()
-  for (var i = 0; i < 10; i++) {
+  for (var i = 0; i < 15; i++) {
     var latLng = {
       lat: places[i].lat,
       lng: places[i].lng
@@ -144,14 +144,13 @@ function searchVenues(places) {
 // Adds a marker to the map and push to the array.
 
 function addMarker(latLng, id, number) {
-  var colorGradient = ['#F086A2', '#DE809F', '#CD7B9D', '#BC759A', '#AB7098', '#9A6B96', '#896593', '#786091', '#58568C', '#45508A'];
+  var colorGradient = ['#FF7C30', '#F07F3E', '#E1834D', '#D2875C', '#C38B6B', '#B58F79', '#A69388', '#979797', '#889BA6', '#799FB5', '#6BA3C3', '#5CA7D2', '#4DABE1', '#3EAFF0', '#30B3FF'];
   var icon = {
     path: 'M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z',
     fillColor: colorGradient[number],
     fillOpacity: 1,
     scale: 0.6,
     strokeColor: colorGradient[number]
-    // strokeWeight: 14
   }
 
   var marker = new google.maps.Marker({
@@ -208,6 +207,7 @@ function initAutocomplete() {
       lng: -77.0028392
     },
     zoom: 13,
+    styles: mapStyleHot,
     mapTypeId: 'roadmap'
   });
 
@@ -248,7 +248,6 @@ function initAutocomplete() {
 // searching for city triggers location change on map and generating of categories
 // Trigger search event
 $('#searchBtn').on('click', function(event) {
-  searchBar = true;
   event.preventDefault();
 
   // clear existing buttons
@@ -261,8 +260,18 @@ $('#searchBtn').on('click', function(event) {
 
 $("#search").keypress(function(e) {
   if (e.which == 13) {
+    searchBar = true;
+
     event.preventDefault();
-    $('#searchBtn').click()
+
+    // $('#searchBtn').click()
+
+    // clear existing buttons
+    catId.empty();
+
+    area = $("#search").val().trim();
+
+    searchFourSquare(search);
   }
 });
 
