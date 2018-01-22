@@ -23,11 +23,11 @@
 
 </head>
 
-<body class="lt-blue-bg">
-  <div class="row">
+<body>
+  <div class="row lt-blue-bg" id="wrapper">
 
     <!-- Adding the Side Nave -->
-    <div class="col s12 m4 l3">
+    <div class="col s12 m4 l3 ok">
       <div>
         <h1 class="logo orange-txt"><em>HotMaps</em></h1>
       </div>
@@ -39,7 +39,6 @@
         <button id="searchBtn" type="button" name="button">Submit</button>
       </div>
       <div id="twitter">
-        <!-- <a href="https://twitter.com/TwitterDev" class="twitter-timeline"></a> -->
       </div>
     </div>
 
@@ -62,11 +61,8 @@
     <!-- Close Row -->
   </div>
 
+  <div>
 
-  <!-- Element Showed -->
-  <a id="menu" class="waves-effect waves-light btn btn-floating" style="display:none"><i class="material-icons">menu</i></a>
-
-  <!-- Tap Target Structure -->
   <div class="tap-target" data-activates="menu">
     <div class="tap-target-content">
       <h5 class="disoveryName">Title</h5>
@@ -76,6 +72,12 @@
 
     </div>
   </div>
+</div>
+
+  <!-- Element Showed -->
+  <a id="menu" class="waves-effect waves-light btn btn-floating" style="display:none"><i class="material-icons">menu</i></a>
+
+  <!-- Tap Target Structure -->
 
   <!-- Modal Trigger -->
   <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Top Places</a>
@@ -99,12 +101,12 @@
 
   <!-- Chat box might got here -->
 
-
   <!--Import jQuery before materialize.js-->
   <script src="lodash.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALhVNfaKgpvJuLqX6VuPljcwgUcEj_qHw&libraries=places&callback=initAutocomplete" async defer></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   <script type="text/javascript" src="./category.js"></script>
   <script type="text/javascript" src="./checkbox.js"></script>
   <script type="text/javascript" src="./venue.js"></script>
@@ -112,6 +114,7 @@
   <script type="text/javascript" src="./mapStyleHot.js"></script>
   <script type="text/javascript" src="./script.js"></script>
   <script type="text/javascript" src="./table.js"></script>
+  <script type="text/javascript" src="./twitter.js"></script>
 
 </body>
 

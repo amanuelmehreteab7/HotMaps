@@ -1,4 +1,3 @@
-
 #map {
   height: 700px;
   width: 100%;
@@ -7,14 +6,16 @@
 .searchBox {
   color: white;
 }
+
 #search {
   padding-left: 10px;
 }
-#search:hover{
+
+#search:hover {
   font-size: 150%;
 }
 
-.pac-item-query:hover  {
+.pac-item-query:hover {
   font-size: 150%;
 }
 
@@ -29,6 +30,7 @@ header, main, footer {
 }
 
 /* COLORS */
+
 .orange-txt {
   color: #FF7C30;
 }
@@ -39,4 +41,10 @@ header, main, footer {
 
 .lt-blue-bg {
   background-color: #FAFFFF;
+}
+
+#twitter {
+  padding-top: 125px;
+  z-index: 5000;
+  position: absolute;
 }
