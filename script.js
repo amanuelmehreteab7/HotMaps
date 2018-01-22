@@ -67,13 +67,13 @@ function searchFourSquare(search) {
       if (typeof(venues[i].categories) === 'undefined' || venues[i].categories.length == 0) {
         var cat = "still undefined";
         var checkinsCount = 0;
-        var category_Id = "still undefined"
+        var categoryId = "still undefined"
 
       } else {
 
         var cat = venues[i].categories[0].name;
         var checkinsCount = venues[i].stats.checkinsCount;
-        var category_Id = venues[i].categories[0].id
+        var categoryId = venues[i].categories[0].id
       }
 
       var name = venues[i].name;
@@ -84,7 +84,7 @@ function searchFourSquare(search) {
       var url = venues[i].url;
       var hereNow = venues[i].hereNow.count;
       var checkinsCount = venues[i].stats.checkinsCount;
-      var categoryId = venues[i].categories[0].id;
+      // var categoryId = venues[i].categories[0].id;
       var twitter = venues[i].contact.twitter;
       var venue = new Venue(name, cat, lat, lng, address, venueId, url, hereNow, checkinsCount, categoryId, twitter);
 
@@ -248,7 +248,6 @@ function initAutocomplete() {
 // searching for city triggers location change on map and generating of categories
 // Trigger search event
 $('#searchBtn').on('click', function(event) {
-  searchBar = true;
   event.preventDefault();
 
   // clear existing buttons
@@ -261,8 +260,18 @@ $('#searchBtn').on('click', function(event) {
 
 $("#search").keypress(function(e) {
   if (e.which == 13) {
+    searchBar = true;
+
     event.preventDefault();
-    $('#searchBtn').click()
+
+    // $('#searchBtn').click()
+
+    // clear existing buttons
+    catId.empty();
+
+    area = $("#search").val().trim();
+
+    searchFourSquare(search);
   }
 });
 
