@@ -3,7 +3,9 @@ var map;
 var markers = [];
 var mapLat = 38.8961336;
 var mapLgt = -77.0028392;
+var metersConversion = 1609.34;
 var area;
+var radius;
 var search;
 var searchBar = true;
 var fscoordinates;
@@ -22,9 +24,6 @@ function searchFourSquare(search) {
   //Creating a call to moment'js in order to add to the end of the squareURL
   var now = moment().format("YYYYMMDD");
 
-  // search radius
-  var radius = 8000; // meters
-
   // URL endpoint for foursquare which contains the city of Washington DC hardcoded in for now
   // on checkbox click trigger this search!!!
   if (searchBar === true) {
@@ -34,7 +33,7 @@ function searchFourSquare(search) {
       'client_id=' + clientID + '&' +
       'client_secret=' + clientSecret + '&' +
       'radius=' + radius + '&' +
-      'limit=20' + '&' +
+      'limit=50' + '&' +
       'v=' + now;
 
     // One search for category
@@ -45,7 +44,7 @@ function searchFourSquare(search) {
       'client_secret=' + clientSecret + '&' +
       'categoryId=' + search + '&' +
       'radius=' + radius + '&' +
-      'limit=20' + '&' +
+      'limit=50' + '&' +
       'v=' + now;
   }
 
@@ -102,6 +101,19 @@ function searchFourSquare(search) {
     }
   }); // Completes the function that pulls down the response
 } // Completes the entire function that searches foursquare
+
+// Initialize search
+function initSearch() {
+  searchBar = true;
+
+  // clear existing buttons
+  catId.empty();
+
+  area = $('#search').val().trim();
+  radius = $('#radius').val().trim() * metersConversion;
+
+  searchFourSquare(search);
+}
 
 // triggered on search
 function searchCategories(places) {
@@ -172,14 +184,14 @@ function addMarker(latLng, id, number) {
 
   lint = (name, hereNow, address, url, twitter) => {
     marker.addListener('click', function() {
-      setTimeout( function() {
+      setTimeout(function() {
         updateAndOpenDiscovery(name, hereNow, address, url);
         updateTwitterTimeline(twitter);
 
 
-    }, 100 );
-  });
-}
+      }, 100);
+    });
+  }
 }
 // Sets the map on all markers in the array.
 function setMapOnAll(map) {
@@ -247,39 +259,27 @@ function initAutocomplete() {
 
 // searching for city triggers location change on map and generating of categories
 // Trigger search event
-$('#searchBtn').on('click', function(event) {
-  event.preventDefault();
-
-  // clear existing buttons
-  catId.empty();
-
-  area = $("#search").val().trim();
-
-  searchFourSquare(search);
-})
-
-$("#search").keypress(function(e) {
+$('#search').keypress(function(e) {
   if (e.which == 13) {
-    searchBar = true;
-
     event.preventDefault();
 
-    // $('#searchBtn').click()
-
-    // clear existing buttons
-    catId.empty();
-
-    area = $("#search").val().trim();
-
-    searchFourSquare(search);
+    initSearch();
   }
 });
+
+$('#radius').change(function() {
+  event.preventDefault();
+
+  initSearch();
+})
 
 $(document).ready(function() {
   // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
   $('.modal').modal();
+  $('select').material_select();
+
 });
 
-$(window).click(function () {
+$(window).click(function() {
   restoreCat();
-})
+});
