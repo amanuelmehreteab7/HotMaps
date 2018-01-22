@@ -32,6 +32,7 @@ function oneRadioBtn(place) {
 
   var label = $('<label>');
   label.attr('for', place.cat);
+  label.addClass('drk-organe-txt');
   label.text(place.cat);
 
   pTag.append(input);

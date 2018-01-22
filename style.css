@@ -27,3 +27,16 @@ html, body {
 header, main, footer {
   padding-left: 300px;
 }
+
+/* COLORS */
+.orange-txt {
+  color: #FF7C30;
+}
+
+.drk-organe-txt {
+  color: #C5A08B;
+}
+
+.lt-blue-bg {
+  background-color: #FAFFFF;
+}

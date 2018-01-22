@@ -120,7 +120,7 @@ function searchCategories(places) {
 // triggered on button click
 function searchVenues(places) {
   $('#addRow').empty()
-  for (var i = 0; i < 10; i++) {
+  for (var i = 0; i < 15; i++) {
     var latLng = {
       lat: places[i].lat,
       lng: places[i].lng
@@ -144,14 +144,13 @@ function searchVenues(places) {
 // Adds a marker to the map and push to the array.
 
 function addMarker(latLng, id, number) {
-  var colorGradient = ['#F086A2', '#DE809F', '#CD7B9D', '#BC759A', '#AB7098', '#9A6B96', '#896593', '#786091', '#58568C', '#45508A'];
+  var colorGradient = ['#FF7C30', '#F07F3E', '#E1834D', '#D2875C', '#C38B6B', '#B58F79', '#A69388', '#979797', '#889BA6', '#799FB5', '#6BA3C3', '#5CA7D2', '#4DABE1', '#3EAFF0', '#30B3FF'];
   var icon = {
     path: 'M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z',
     fillColor: colorGradient[number],
     fillOpacity: 1,
     scale: 0.6,
     strokeColor: colorGradient[number]
-    // strokeWeight: 14
   }
 
   var marker = new google.maps.Marker({
@@ -206,6 +205,7 @@ function initAutocomplete() {
       lng: -77.0028392
     },
     zoom: 13,
+    styles: mapStyleHot,
     mapTypeId: 'roadmap'
   });
 
@@ -248,7 +248,7 @@ function initAutocomplete() {
 $('#searchBtn').on('click', function(event) {
   searchBar = true;
   event.preventDefault();
-  
+
   // clear existing buttons
   catId.empty();
 
