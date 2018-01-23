@@ -185,7 +185,8 @@ function addMarker(latLng, id, number) {
   lint = (name, hereNow, address, url, twitter) => {
     marker.addListener('click', function() {
       setTimeout(function() {
-        updateAndOpenDiscovery(name, hereNow, address, url);
+        // updateAndOpenDiscovery(name, hereNow, address, url);
+        activateSidePanel(name, hereNow, address, url);
         updateTwitterTimeline(twitter);
 
 
@@ -218,7 +219,7 @@ function initAutocomplete() {
       lat: 38.8961336,
       lng: -77.0028392
     },
-    zoom: 13,
+    zoom: 12,
     styles: mapStyleHot,
     mapTypeId: 'roadmap'
   });
@@ -283,3 +284,5 @@ $(document).ready(function() {
 $(window).click(function() {
   restoreCat();
 });
+
+$(".button-collapse").sideNav();

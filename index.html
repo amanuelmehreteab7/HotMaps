@@ -24,12 +24,26 @@
 
 <body>
 
+  <ul id="slide-out" class="side-nav">
+    <li>
+      <h1>HELLO WORLD</h1>
+    </li>
+    <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+    <li><a href="#!">Second Link</a></li>
+    <li>
+      <div class="divider"></div>
+    </li>
+    <li><a class="subheader">Subheader</a></li>
+    <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+  </ul>
+
   <div class="row lt-blue-bg" id="wrapper">
 
     <!-- Adding the Side Nave -->
     <div class="col s12 m4 l3 ok">
       <div>
         <h1 class="logo orange-txt"><em>HotMaps</em></h1>
+
       </div>
 
       <div class="input-field col s12">
@@ -40,16 +54,19 @@
           <option value="50">50</option>
         </select>
         <label>search radius (miles)</label>
+
       </div>
+
+      <!-- Activate side panel -->
+      <a href="#" data-activates="slide-out" id="open-panel" class="btn button-collapse">Side nav demo</a>
 
       <div>
         <form id="cat" action="#"></form>
+
       </div>
-      <!-- <div>
-        <button id="searchBtn" type="button" name="button">Submit</button>
-      </div> -->
-      <div id="twitter">
-      </div>
+
+      <div id="twitter"></div>
+
     </div>
 
     <!-- Google Maps here -->
@@ -63,28 +80,21 @@
 
     </div>
 
-    <!-- Tap Target Structure -->
-
     <!-- Close Row -->
   </div>
 
-  <div>
+  <!-- Tap Target Structure -->
+  <!-- <div class="tap-target" data-activates="menu">
+    <div class="tap-target-content">
+      <h5 class="disoveryName">Title</h5>
+      <p class="disoveryHereNow">A bunch of text</p>
+      <p class="disoveryAddress">A bunch of text</p>
+      <p class="disoveryURL">A bunch of text</p>
 
-    <div class="tap-target" data-activates="menu">
-      <div class="tap-target-content">
-        <h5 class="disoveryName">Title</h5>
-        <p class="disoveryHereNow">A bunch of text</p>
-        <p class="disoveryAddress">A bunch of text</p>
-        <p class="disoveryURL">A bunch of text</p>
-
-      </div>
     </div>
-  </div>
-
+  </div> -->
   <!-- Element Showed -->
   <a id="menu" class="waves-effect waves-light btn btn-floating" style="display:none"><i class="material-icons">menu</i></a>
-
-  <!-- Tap Target Structure -->
 
   <!-- Modal Trigger -->
   <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Top Places</a>
@@ -105,7 +115,6 @@
     </div>
   </div>
 
-
   <!-- Chat box might got here -->
 
   <!--Import jQuery before materialize.js-->
@@ -117,7 +126,7 @@
   <script type="text/javascript" src="./category.js"></script>
   <script type="text/javascript" src="./checkbox.js"></script>
   <script type="text/javascript" src="./venue.js"></script>
-  <script type="text/javascript" src="./discovery.js"></script>
+  <script type="text/javascript" src="./sidepanel.js"></script>
   <script type="text/javascript" src="./mapStyleHot.js"></script>
   <script type="text/javascript" src="./script.js"></script>
   <script type="text/javascript" src="./table.js"></script>
