@@ -13,6 +13,10 @@
   font-size: 150%;
 }
 
+#open-panel {
+  display: none;
+}
+
 .pac-item-query:hover {
   font-size: 150%;
 }
