@@ -139,7 +139,7 @@ function searchVenues(places) {
     }
     var categoryId = places[i].categoryId;
     var name = places[i].name;
-    var hereNow = places[i].name;
+    var hereNow = places[i].hereNow;
     var url = places[i].url;
     var address = places[i].address;
     var twitter = places[i].twitter;
