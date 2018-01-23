@@ -1,5 +1,6 @@
 
 var sidePanel = $('#twitter');
+var wrap2 = $('#wrap2')
 
 updateTwitterTimeline = profile => {
 
@@ -29,15 +30,39 @@ updateTwitterTimeline = profile => {
   }
 }
 
-restoreCat = () => {
-  if ($('#wrapper').hasClass("open") == true)
-  {
-    return true;
-  }
-  else
-  {
-    $('#cat').show();
-    $('#searchBtn').show();
-    sidePanel.empty();
-  }
-}
+
+
+
+//
+//
+// restoreCat = () => {
+//   // wrap2.update()
+//
+//   if ($('#wrap2').hasClass("open"))
+//   {
+//     console.log("catpop");
+//     return true;
+//   }
+//   else
+//   {
+//     $('#cat').show();
+//     $('#searchBtn').show();
+//     sidePanel.empty();
+//     console.log("no1");
+//   }
+// }
+//
+// moveTwitter = () => {
+//   if ($('.table').hasClass("open"))
+//   {
+//     sidePanel.animate({left: "800px"});
+//     console.log("tutut");
+//   }
+//   else {
+//     {
+//       console.log("no2");
+//       return true;
+//
+//     }
+//   }
+// }
