@@ -187,8 +187,6 @@ function addMarker(latLng, id, number) {
       setTimeout(function() {
         updateAndOpenDiscovery(name, hereNow, address, url);
         updateTwitterTimeline(twitter);
-
-
       }, 100);
     });
   }
@@ -281,5 +279,24 @@ $(document).ready(function() {
 });
 
 $(window).click(function() {
-  restoreCat();
+  setTimeout(function () {
+      if ($('.tap-target-wrapper').hasClass("open"))
+      {
+        return true;
+      }
+      else
+      {
+        $('#cat').show();
+        $('#searchBtn').show();
+        sidePanel.empty();
+      }
+
+      if ($('#modal1').hasClass("open"))
+        {
+          $('#twitter').attr('style', "display: none");
+        }
+        else {
+            $('#twitter').attr('style', "display: initial");
+          }
+        }, 1000);
 });
