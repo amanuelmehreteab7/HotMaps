@@ -3,15 +3,16 @@ var updateDisoveryHereNow = $(".disoveryHereNow");
 var updateDisoveryAddress = $(".disoveryAddress");
 var updateDisoveryURL = $(".disoveryURL");
 
-activateSidePanel = (name, hereNow, disoveryAddress, disoveryURL) => {
+activateSidePanel = (name, venueId, hereNow, disoveryAddress, disoveryURL) => {
 
   updateDisoveryName.text(name);
-  updateDisoveryHereNow.text(hereNow);
-  updateDisoveryAddress.text(disoveryAddress);
-  updateDisoveryURL.text(disoveryURL);
+  updateDisoveryAddress.html('<i class="material-icons">location_on</i>' + disoveryAddress);
+  updateDisoveryURL.attr('href',disoveryURL);
 
   $('#cat').hide();
   $('#searchBtn').hide();
   $('#open-panel').click()
+
+  var venuePhoto = photoSearch(venueId);
 
 }

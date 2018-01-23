@@ -42,7 +42,7 @@ header, main, footer {
 }
 
 #twitter {
-  padding-top: 125px;
+  padding-top: 0px;
   z-index: 5000;
-  position: absolute;
+  /* position: absolute; */
 }
