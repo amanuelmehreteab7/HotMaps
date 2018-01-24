@@ -23,6 +23,25 @@
 </head>
 
 <body>
+  <ul id="slide-out" class="side-nav">
+    <li>
+      <div class="background">
+        <img class="photoURL">
+      </div>
+    </li>
+    <li>
+      <h5 class="disoveryName">Title</h5>
+    </li>
+    <li>
+      <div class="divider"></div>
+    </li>
+    <li><a class="disoveryAddress" href="#!"></a></li>
+    <li><a class="disoveryURL" href="#!"><i class="material-icons">cloud</i>website</a>
+      <div id="twitter"></div>
+    </li>
+    <!-- <li>
+    </li> -->
+  </ul>
 
   <div class="row lt-blue-bg" id="wrapper">
 
@@ -40,23 +59,25 @@
           <option value="50">50</option>
         </select>
         <label>search radius (miles)</label>
+
       </div>
+
+      <!-- Activate side panel -->
+      <a href="#" data-activates="slide-out" id="open-panel" class="btn button-collapse">Side nav demo</a>
 
       <div>
         <form id="cat" action="#"></form>
       </div>
-      <div id="twitter">
-      </div>
-      <br>
-  <div class="row">
-    <div class="col s3"><a data-cat-id="4d4b7105d754a06374d81259" class="btn-floating btn-large waves-effect waves-light blue darken-2 tooltipped" data-position="boton" data-tooltip="Restaurantes"><i class="material-icons">local_dining</i></a></div>
-    <div class="col s3"><a data-cat-id="52f2ab2ebcbc57f1066b8b56" class="btn-floating btn-large waves-effect waves-light green darken-2 tooltipped" data-position="boton" data-tooltip="ATM"><i class="material-icons">local_atm</i></a></div>
-    <div class="col s3"><a data-cat-id="4bf58dd8d48988d116941735" class="btn-floating btn-large waves-effect waves-light orange darken-2 tooltipped" data-position="boton" data-tooltip="Bar" ><i class="material-icons">local_bar</i></a></div>
-    <div class="col s3"><a data-cat-id="4bf58dd8d48988d104941735" class="btn-floating btn-large waves-effect waves-light red darken-2 tooltipped" data-position="boton" data-tooltip="Hospital"><i class="material-icons">local_hospital</i></a></div>
-    <!-- <div class="col s3"><a href="#modal1" class="btn-floating btn-large waves-effect waves-light modal-trigger orange darken-2 tooltipped" data-position="right" data-tooltip="Top Places"><i class="material-icons">local_parking</i></a></div> -->
-    <!-- <div class="col s2"><a href="#modal1" class="btn-floating btn-large waves-effect waves-light modal-trigger orange darken-2 tooltipped" data-position="right" data-tooltip="Top Places"><i class="material-icons">local_hotel</i></a></div> -->
-  </div>
 
+      <br>
+      <div class="row">
+        <div class="col s3"><a data-cat-id="4d4b7105d754a06374d81259" class="btn-floating btn-large waves-effect waves-light blue darken-2 tooltipped" data-position="boton" data-tooltip="Restaurantes"><i class="material-icons">local_dining</i></a></div>
+        <div class="col s3"><a data-cat-id="52f2ab2ebcbc57f1066b8b56" class="btn-floating btn-large waves-effect waves-light green darken-2 tooltipped" data-position="boton" data-tooltip="ATM"><i class="material-icons">local_atm</i></a></div>
+        <div class="col s3"><a data-cat-id="4bf58dd8d48988d116941735" class="btn-floating btn-large waves-effect waves-light orange darken-2 tooltipped" data-position="boton" data-tooltip="Bar"><i class="material-icons">local_bar</i></a></div>
+        <div class="col s3"><a data-cat-id="4bf58dd8d48988d104941735" class="btn-floating btn-large waves-effect waves-light red darken-2 tooltipped" data-position="boton" data-tooltip="Hospital"><i class="material-icons">local_hospital</i></a></div>
+        <!-- <div class="col s3"><a href="#modal1" class="btn-floating btn-large waves-effect waves-light modal-trigger orange darken-2 tooltipped" data-position="right" data-tooltip="Top Places"><i class="material-icons">local_parking</i></a></div> -->
+        <!-- <div class="col s2"><a href="#modal1" class="btn-floating btn-large waves-effect waves-light modal-trigger orange darken-2 tooltipped" data-position="right" data-tooltip="Top Places"><i class="material-icons">local_hotel</i></a></div> -->
+      </div>
     </div>
 
     <!-- Google Maps here -->
@@ -70,28 +91,21 @@
 
     </div>
 
-    <!-- Tap Target Structure -->
-
     <!-- Close Row -->
   </div>
 
-  <div>
+  <!-- Tap Target Structure -->
+  <!-- <div class="tap-target" data-activates="menu">
+    <div class="tap-target-content">
+      <h5 class="disoveryName">Title</h5>
+      <p class="disoveryHereNow">A bunch of text</p>
+      <p class="disoveryAddress">A bunch of text</p>
+      <p class="disoveryURL">A bunch of text</p>
 
-    <div class="tap-target" data-activates="menu">
-      <div class="tap-target-content">
-        <h5 class="disoveryName">Title</h5>
-        <p class="disoveryHereNow">A bunch of text</p>
-        <p class="disoveryAddress">A bunch of text</p>
-        <p class="disoveryURL">A bunch of text</p>
-
-      </div>
     </div>
-  </div>
-
+  </div> -->
   <!-- Element Showed -->
   <a id="menu" class="waves-effect waves-light btn btn-floating" style="display:none"><i class="material-icons">menu</i></a>
-
-  <!-- Tap Target Structure -->
 
   <!-- Modal Structure -->
   <div id="modal1" class="modal bottom-sheet">
@@ -99,20 +113,19 @@
       <!-- Table -->
       <div class="table">
         <table class="responsive highlight striped">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Number of people here</th>
-            <th>Address</th>
-            <th>URL</th>
-          </tr>
-        </thead>
-        <tbody id="addRow">
-        </tbody>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Number of people here</th>
+              <th>Address</th>
+              <th>URL</th>
+            </tr>
+          </thead>
+          <tbody id="addRow">
+          </tbody>
       </div>
     </div>
   </div>
-
 
   <!-- Chat box might got here -->
 
@@ -123,9 +136,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
   <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   <script type="text/javascript" src="./category.js"></script>
+  <script type="text/javascript" src="./photoSearch.js"></script>
   <script type="text/javascript" src="./checkbox.js"></script>
   <script type="text/javascript" src="./venue.js"></script>
-  <script type="text/javascript" src="./discovery.js"></script>
+  <script type="text/javascript" src="./sidepanel.js"></script>
   <script type="text/javascript" src="./mapStyleHot.js"></script>
   <script type="text/javascript" src="./script.js"></script>
   <script type="text/javascript" src="./table.js"></script>

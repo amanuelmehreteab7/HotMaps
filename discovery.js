@@ -1,4 +1,4 @@
-var  updateDisoveryName = $(".disoveryName");
+var updateDisoveryName = $(".disoveryName");
 var updateDisoveryHereNow = $(".disoveryHereNow");
 var updateDisoveryAddress = $(".disoveryAddress");
 var updateDisoveryURL = $ (".disoveryURL");

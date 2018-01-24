@@ -20,8 +20,8 @@ updateTwitterTimeline = profile => {
     tTag.attr('href', `https://twitter.com/${profile}`);
     tTag.attr('class', 'twitter-timeline');
     tTag.attr('data-width', 'auto');
-    tTag.attr('data-height', '460');
-    tTag.attr('data-theme', 'dark');
+    tTag.attr('data-height', '300px');
+    tTag.attr('data-theme', 'light');
 
     sidePanel.append(tTag);
 

@@ -1,4 +1,12 @@
-var googleApi_key = 'AIzaSyALhVNfaKgpvJuLqX6VuPljcwgUcEj_qHw'
+var googleApi_key = 'AIzaSyALhVNfaKgpvJuLqX6VuPljcwgUcEj_qHw';
+// var clientID = 'PDKD4SZGV2WUM3HW00FFLWJGUMMLSFLMG4UGKN4DEGDH0GWB';
+// var clientSecret = 'JWQ5SO32GUFAKVDX5QWE1PPIHSKER40VTOWT01PUSA1O42TS';
+var clientID = 'Z3ZK4RYUU12ONLPWGOTA5DY3KOTMYFIVRFEOWW0KZ3VB13TF';
+var clientSecret = 'JRZK5DZC5GJVEFTIOEJVEGH14KPSI5V5XUJWPD3KTYFXEQK1';
+
+//Creating a call to moment'js in order to add to the end of the squareURL
+var now = moment().format("YYYYMMDD");
+
 var map;
 var markers = [];
 var mapLat = 38.8961336;
@@ -15,14 +23,6 @@ var fscoordinates;
 // stop this function after we get all places.
 function searchFourSquare(search) {
   var fscoordinates = []; //This will hold our array of objects which is the response from FourSquare
-
-  // var clientID = 'PDKD4SZGV2WUM3HW00FFLWJGUMMLSFLMG4UGKN4DEGDH0GWB';
-  // var clientSecret = 'JWQ5SO32GUFAKVDX5QWE1PPIHSKER40VTOWT01PUSA1O42TS';
-  var clientID = 'Z3ZK4RYUU12ONLPWGOTA5DY3KOTMYFIVRFEOWW0KZ3VB13TF';
-  var clientSecret = 'JRZK5DZC5GJVEFTIOEJVEGH14KPSI5V5XUJWPD3KTYFXEQK1';
-
-  //Creating a call to moment'js in order to add to the end of the squareURL
-  var now = moment().format("YYYYMMDD");
 
   // URL endpoint for foursquare which contains the city of Washington DC hardcoded in for now
   // on checkbox click trigger this search!!!
@@ -63,6 +63,7 @@ function searchFourSquare(search) {
     venues.sort(function(a, b) {
       return b.stats.checkinsCount - a.stats.checkinsCount;
     });
+    console.log('venues: ', venues);
 
     for (var i = 0; i < venues.length; i++) {
 
@@ -86,7 +87,6 @@ function searchFourSquare(search) {
       var url = venues[i].url;
       var hereNow = venues[i].hereNow.count;
       var checkinsCount = venues[i].stats.checkinsCount;
-      // var categoryId = venues[i].categories[0].id;
       var twitter = venues[i].contact.twitter;
       var venue = new Venue(name, cat, lat, lng, address, venueId, url, hereNow, checkinsCount, categoryId, twitter);
 
@@ -142,6 +142,7 @@ function searchVenues(places) {
     }
     var categoryId = places[i].categoryId;
     var name = places[i].name;
+    var venueId = places[i].venueId;
     var hereNow = places[i].hereNow;
     var url = places[i].url;
     var address = places[i].address;
@@ -149,7 +150,7 @@ function searchVenues(places) {
 
     addMarker(latLng, categoryId, i);
 
-    lint(name, hereNow, address, url, twitter);
+    lint(name, venueId, hereNow, address, url, twitter);
 
     updateTable(name, hereNow, address, url, categoryId);
     // add
@@ -185,10 +186,11 @@ function addMarker(latLng, id, number) {
     }
   }
 
-  lint = (name, hereNow, address, url, twitter) => {
+  lint = (name, venueId, hereNow, address, url, twitter) => {
     marker.addListener('click', function() {
       setTimeout(function() {
-        updateAndOpenDiscovery(name, hereNow, address, url);
+        // updateAndOpenDiscovery(name, hereNow, address, url);
+        activateSidePanel(name, venueId, hereNow, address, url);
         updateTwitterTimeline(twitter);
 
 
@@ -221,7 +223,7 @@ function initAutocomplete() {
       lat: 38.8961336,
       lng: -77.0028392
     },
-    zoom: 13,
+    zoom: 12,
     styles: mapStyleHot,
     mapTypeId: 'roadmap'
   });
@@ -294,3 +296,5 @@ $(document).ready(function() {
 $(window).click(function() {
   restoreCat();
 });
+
+$(".button-collapse").sideNav();
