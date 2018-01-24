@@ -38,6 +38,7 @@ function searchFourSquare(search) {
 
     // One search for category
   } else {
+
     var squareURL = 'https://api.foursquare.com/v2/venues/search?' +
       'near=' + area + '&' +
       'client_id=' + clientID + '&' +
@@ -46,6 +47,8 @@ function searchFourSquare(search) {
       'radius=' + radius + '&' +
       'limit=50' + '&' +
       'v=' + now;
+      console.log(squareURL);
+      console.log(area);
   }
 
   //Making a call to the url for the city in order to display the popular locations
@@ -265,6 +268,14 @@ $('#search').keypress(function(e) {
 
     initSearch();
   }
+});
+
+$('.btn-floating').on('click', function(event) {
+  search = $(this).attr('data-cat-id');;
+  console.log(search);
+  searchFourSquare(search);
+  searchBar = false;
+  clearMarkers()
 });
 
 $('#radius').change(function() {
