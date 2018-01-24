@@ -59,6 +59,7 @@ function searchFourSquare(search) {
 
     // For each of the venue responses matching the city, loop through and create an array of objects
     var venues = data.response.venues;
+    
     //sorts the response by most checkinsCount
     venues.sort(function(a, b) {
       return b.stats.checkinsCount - a.stats.checkinsCount;
