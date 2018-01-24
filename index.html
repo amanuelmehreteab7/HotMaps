@@ -48,8 +48,7 @@
     <!-- Adding the Side Nave -->
     <div class="col s12 m4 l3 ok">
       <div>
-        <h1 class="logo orange-txt"><em>HotMaps</em></h1>
-
+        <h1 class="logo orange-txt"><em>HotMaps</em><a href="#modal1" class="btn-floating btn-large waves-effect waves-light modal-trigger orange darken-2 tooltipped" data-position="right" data-tooltip="Top Places"><i class="material-icons left">whatshot</i></a></h1>
       </div>
 
       <div class="input-field col s12">
@@ -100,21 +99,22 @@
   <!-- Element Showed -->
   <a id="menu" class="waves-effect waves-light btn btn-floating" style="display:none"><i class="material-icons">menu</i></a>
 
-  <!-- Modal Trigger -->
-  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Top Places</a>
-
   <!-- Modal Structure -->
   <div id="modal1" class="modal bottom-sheet">
     <div class="modal-content">
       <!-- Table -->
       <div class="table">
-        <table class="responsive highlight striped" id="addRow">
+        <table class="responsive highlight striped">
+        <thead>
           <tr>
             <th>Name</th>
             <th>Number of people here</th>
             <th>Address</th>
             <th>URL</th>
           </tr>
+        </thead>
+        <tbody id="addRow">
+        </tbody>
       </div>
     </div>
   </div>
