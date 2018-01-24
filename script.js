@@ -12,12 +12,11 @@ var markers = [];
 var mapLat = 38.8961336;
 var mapLgt = -77.0028392;
 var metersConversion = 1609.34;
-var area;
-var radius;
+var area = "Washington,%20DC,%20United%20States";
+var radius = '16093.4';
 var search;
 var searchBar = true;
 var fscoordinates;
-
 
 //Creating a request to search four square
 // stop this function after we get all places.
@@ -279,6 +278,8 @@ $(document).ready(function() {
   // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
   $('.modal').modal();
   $('select').material_select();
+  searchFourSquare(area);
+  searchVenues(places);
 
 });
 
