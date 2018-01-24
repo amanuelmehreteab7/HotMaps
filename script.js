@@ -18,7 +18,7 @@ var search;
 var searchBar = true;
 var fscoordinates;
 
-
+$("#logo").append('<img src="./images/HotMapsLogo.png" alt=HotMaps>')
 //Creating a request to search four square
 // stop this function after we get all places.
 function searchFourSquare(search) {
