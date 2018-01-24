@@ -12,7 +12,7 @@ var fscoordinates;
 //Creating a request to search four square
 // stop this function after we get all places.
 function searchFourSquare(search) {
-  var fscoordinates = []; //This will hold our array of objects which is the response from FourSquare
+  fscoordinates = []; //This will hold our array of objects which is the response from FourSquare
 
   // var clientID = 'PDKD4SZGV2WUM3HW00FFLWJGUMMLSFLMG4UGKN4DEGDH0GWB';
   // var clientSecret = 'JWQ5SO32GUFAKVDX5QWE1PPIHSKER40VTOWT01PUSA1O42TS';
@@ -34,7 +34,7 @@ function searchFourSquare(search) {
       'client_id=' + clientID + '&' +
       'client_secret=' + clientSecret + '&' +
       'radius=' + radius + '&' +
-      'limit=20' + '&' +
+      'limit=50' + '&' +
       'v=' + now;
 
     // One search for category
@@ -45,7 +45,7 @@ function searchFourSquare(search) {
       'client_secret=' + clientSecret + '&' +
       'categoryId=' + search + '&' +
       'radius=' + radius + '&' +
-      'limit=20' + '&' +
+      'limit=50' + '&' +
       'v=' + now;
   }
 
@@ -67,13 +67,13 @@ function searchFourSquare(search) {
       if (typeof(venues[i].categories) === 'undefined' || venues[i].categories.length == 0) {
         var cat = "still undefined";
         var checkinsCount = 0;
-        var category_Id = "still undefined"
+        var categoryId = "still undefined"
 
       } else {
 
         var cat = venues[i].categories[0].name;
         var checkinsCount = venues[i].stats.checkinsCount;
-        var category_Id = venues[i].categories[0].id
+        var categoryId = venues[i].categories[0].id
       }
 
       var name = venues[i].name;
@@ -84,7 +84,7 @@ function searchFourSquare(search) {
       var url = venues[i].url;
       var hereNow = venues[i].hereNow.count;
       var checkinsCount = venues[i].stats.checkinsCount;
-      var categoryId = venues[i].categories[0].id;
+      // var categoryId = venues[i].categories[0].id;
       var twitter = venues[i].contact.twitter;
       var venue = new Venue(name, cat, lat, lng, address, venueId, url, hereNow, checkinsCount, categoryId, twitter);
 
@@ -100,6 +100,7 @@ function searchFourSquare(search) {
       searchVenues(fscoordinates);
 
     }
+
   }); // Completes the function that pulls down the response
 } // Completes the entire function that searches foursquare
 
@@ -120,7 +121,7 @@ function searchCategories(places) {
 // triggered on button click
 function searchVenues(places) {
   $('#addRow').empty()
-  for (var i = 0; i < 10; i++) {
+  for (var i = 0; i < 15; i++) {
     var latLng = {
       lat: places[i].lat,
       lng: places[i].lng
@@ -144,14 +145,13 @@ function searchVenues(places) {
 // Adds a marker to the map and push to the array.
 
 function addMarker(latLng, id, number) {
-  var colorGradient = ['#F086A2', '#DE809F', '#CD7B9D', '#BC759A', '#AB7098', '#9A6B96', '#896593', '#786091', '#58568C', '#45508A'];
+  var colorGradient = ['#FF7C30', '#F07F3E', '#E1834D', '#D2875C', '#C38B6B', '#B58F79', '#A69388', '#979797', '#889BA6', '#799FB5', '#6BA3C3', '#5CA7D2', '#4DABE1', '#3EAFF0', '#30B3FF'];
   var icon = {
     path: 'M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z',
     fillColor: colorGradient[number],
     fillOpacity: 1,
     scale: 0.6,
     strokeColor: colorGradient[number]
-    // strokeWeight: 14
   }
 
   var marker = new google.maps.Marker({
@@ -204,10 +204,11 @@ function deleteMarkers() {
 function initAutocomplete() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {
-      lat: 38.8961336,
-      lng: -77.0028392
+      lat: 38.898851600590795,
+      lng: -77.036563728522
     },
     zoom: 13,
+    styles: mapStyleHot,
     mapTypeId: 'roadmap'
   });
 
@@ -237,18 +238,20 @@ function initAutocomplete() {
       if (place.geometry.viewport) {
         // Only geocodes have viewport.
         bounds.union(place.geometry.viewport);
+        // google.maps.setZoom(13);
       } else {
         bounds.extend(place.geometry.location);
       }
     }); //Closing the function that returns the location on the map
     map.fitBounds(bounds);
+    map.setZoom(12)
   }); //Closing the anonymous function that looks for the search
+
 } // Close initAutocomplete function
 
 // searching for city triggers location change on map and generating of categories
 // Trigger search event
 $('#searchBtn').on('click', function(event) {
-  searchBar = true;
   event.preventDefault();
 
   // clear existing buttons
@@ -261,8 +264,42 @@ $('#searchBtn').on('click', function(event) {
 
 $("#search").keypress(function(e) {
   if (e.which == 13) {
+    searchBar = true;
+
     event.preventDefault();
-    $('#searchBtn').click()
+
+    // $('#searchBtn').click()
+
+    // clear existing buttons
+    catId.empty();
+
+    area = $("#search").val().trim();
+
+    searchFourSquare(search);
+
+    setTimeout(function(){
+      //Adding a heatmap to the map
+
+      var heatMapData = [];
+      for (var i = 0; i < fscoordinates.length; i++) {
+        heatMapData.push({
+          location: new google.maps.LatLng(fscoordinates[i].lat, fscoordinates[i].lng),
+          weight: fscoordinates[i].hereNow
+        })
+      }
+
+      console.log("fscoordinates:")
+      console.log(fscoordinates)
+      console.log("heat map data:")
+      console.log(heatMapData)
+
+      var heatMap = new google.maps.visualization.HeatmapLayer({
+        data:heatMapData,
+        map:map
+      });
+      heatMap.setMap(map);
+    }, 1000)
+
   }
 });
 
