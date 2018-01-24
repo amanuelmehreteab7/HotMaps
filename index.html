@@ -23,6 +23,25 @@
 </head>
 
 <body>
+  <ul id="slide-out" class="side-nav">
+    <li>
+      <div class="background">
+        <img class="photoURL">
+      </div>
+    </li>
+    <li>
+      <h5 class="disoveryName">Title</h5>
+    </li>
+    <li>
+      <div class="divider"></div>
+    </li>
+    <li><a class="disoveryAddress" href="#!"></a></li>
+    <li><a class="disoveryURL" href="#!"><i class="material-icons">cloud</i>website</a>
+      <div id="twitter"></div>
+</li>
+    <!-- <li>
+    </li> -->
+  </ul>
 
   <div class="row lt-blue-bg" id="wrapper">
 
@@ -40,15 +59,16 @@
           <option value="50">50</option>
         </select>
         <label>search radius (miles)</label>
+
       </div>
+
+      <!-- Activate side panel -->
+      <a href="#" data-activates="slide-out" id="open-panel" class="btn button-collapse">Side nav demo</a>
 
       <div>
         <form id="cat" action="#"></form>
-      </div>
-      <div id="twitter">
-      </div>
 
-      <!-- Modal Trigger -->
+      </div>
 
     </div>
 
@@ -63,28 +83,21 @@
 
     </div>
 
-    <!-- Tap Target Structure -->
-
     <!-- Close Row -->
   </div>
 
-  <div>
+  <!-- Tap Target Structure -->
+  <!-- <div class="tap-target" data-activates="menu">
+    <div class="tap-target-content">
+      <h5 class="disoveryName">Title</h5>
+      <p class="disoveryHereNow">A bunch of text</p>
+      <p class="disoveryAddress">A bunch of text</p>
+      <p class="disoveryURL">A bunch of text</p>
 
-    <div class="tap-target" data-activates="menu">
-      <div class="tap-target-content">
-        <h5 class="disoveryName">Title</h5>
-        <p class="disoveryHereNow">A bunch of text</p>
-        <p class="disoveryAddress">A bunch of text</p>
-        <p class="disoveryURL">A bunch of text</p>
-
-      </div>
     </div>
-  </div>
-
+  </div> -->
   <!-- Element Showed -->
   <a id="menu" class="waves-effect waves-light btn btn-floating" style="display:none"><i class="material-icons">menu</i></a>
-
-  <!-- Tap Target Structure -->
 
   <!-- Modal Structure -->
   <div id="modal1" class="modal bottom-sheet">
@@ -106,7 +119,6 @@
     </div>
   </div>
 
-
   <!-- Chat box might got here -->
 
   <!--Import jQuery before materialize.js-->
@@ -116,9 +128,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
   <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   <script type="text/javascript" src="./category.js"></script>
+  <script type="text/javascript" src="./photoSearch.js"></script>
   <script type="text/javascript" src="./checkbox.js"></script>
   <script type="text/javascript" src="./venue.js"></script>
-  <script type="text/javascript" src="./discovery.js"></script>
+  <script type="text/javascript" src="./sidepanel.js"></script>
   <script type="text/javascript" src="./mapStyleHot.js"></script>
   <script type="text/javascript" src="./script.js"></script>
   <script type="text/javascript" src="./table.js"></script>
