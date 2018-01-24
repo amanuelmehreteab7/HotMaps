@@ -38,7 +38,7 @@
     <li><a class="disoveryAddress" href="#!"></a></li>
     <li><a class="disoveryURL" href="#!"><i class="material-icons">cloud</i>website</a>
       <div id="twitter"></div>
-</li>
+    </li>
     <!-- <li>
     </li> -->
   </ul>
@@ -48,7 +48,10 @@
     <!-- Adding the Side Nave -->
     <div class="col s12 m4 l3 ok">
       <div>
-        <h1 class="logo orange-txt"><em>H<a href="#modal1" class="btn-floating btn-large waves-effect waves-light modal-trigger orange darken-2 tooltipped" data-position="right" data-tooltip="Top Places"><i class="material-icons left">whatshot</i></a>tMaps</em></h1>
+
+      <a href="#modal1" class="waves-effect waves-light modal-trigger logo darken-2 tooltipped" data-position="right" data-tooltip="Top Places">
+        <img src="./images/HotMapsLogo.jpg" alt="HotMaps" height="100px" width="350px">
+      </a>
       </div>
 
       <div class="input-field col s12">
@@ -67,9 +70,17 @@
 
       <div>
         <form id="cat" action="#"></form>
-
       </div>
 
+      <br>
+      <div class="row">
+        <div class="col s3"><a data-cat-id="4d4b7105d754a06374d81259" class="btn-floating btn-large waves-effect waves-light blue darken-2 tooltipped" data-position="boton" data-tooltip="Restaurantes"><i class="material-icons">local_dining</i></a></div>
+        <div class="col s3"><a data-cat-id="52f2ab2ebcbc57f1066b8b56" class="btn-floating btn-large waves-effect waves-light green darken-2 tooltipped" data-position="boton" data-tooltip="ATM"><i class="material-icons">local_atm</i></a></div>
+        <div class="col s3"><a data-cat-id="4bf58dd8d48988d116941735" class="btn-floating btn-large waves-effect waves-light orange darken-2 tooltipped" data-position="boton" data-tooltip="Bar"><i class="material-icons">local_bar</i></a></div>
+        <div class="col s3"><a data-cat-id="4bf58dd8d48988d104941735" class="btn-floating btn-large waves-effect waves-light red darken-2 tooltipped" data-position="boton" data-tooltip="Hospital"><i class="material-icons">local_hospital</i></a></div>
+        <!-- <div class="col s3"><a href="#modal1" class="btn-floating btn-large waves-effect waves-light modal-trigger orange darken-2 tooltipped" data-position="right" data-tooltip="Top Places"><i class="material-icons">local_parking</i></a></div> -->
+        <!-- <div class="col s2"><a href="#modal1" class="btn-floating btn-large waves-effect waves-light modal-trigger orange darken-2 tooltipped" data-position="right" data-tooltip="Top Places"><i class="material-icons">local_hotel</i></a></div> -->
+      </div>
     </div>
 
     <!-- Google Maps here -->
@@ -105,16 +116,16 @@
       <!-- Table -->
       <div class="table">
         <table class="responsive highlight striped">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Number of people here</th>
-            <th>Address</th>
-            <th>URL</th>
-          </tr>
-        </thead>
-        <tbody id="addRow">
-        </tbody>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Number of people here</th>
+              <th>Address</th>
+              <th>URL</th>
+            </tr>
+          </thead>
+          <tbody id="addRow">
+          </tbody>
       </div>
     </div>
   </div>
