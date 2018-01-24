@@ -1,5 +1,5 @@
 #map {
-  height: 700px;
+  height: 740px;
   width: 100%;
 }
 
@@ -47,6 +47,10 @@ header, main, footer {
 
 .lt-blue-bg {
   background-color: #FAFFFF;
+}
+
+.disoveryName {
+  padding-left: 10px;
 }
 
 #twitter {
