@@ -45,6 +45,10 @@ header, main, footer {
   background-color: #FAFFFF;
 }
 
+.disoveryName {
+  padding-left: 10px;
+}
+
 #twitter {
   padding-top: 0px;
   z-index: 5000;
