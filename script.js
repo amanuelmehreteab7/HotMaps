@@ -11,8 +11,6 @@ var now = moment().format("YYYYMMDD");
 
 var map;
 var markers = [];
-var mapLat = 38.8961336;
-var mapLgt = -77.0028392;
 var metersConversion = 1609.34;
 var area = "Washington,%20DC,%20United%20States";
 var radius = '16093.4';
@@ -237,8 +235,8 @@ function deleteMarkers() {
 function initAutocomplete() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {
-      lat: 38.8961336,
-      lng: -77.0028392
+      lat: 38.9071923,
+      lng: -77.0368707
     },
     zoom: 12,
     styles: mapStyleHot,
@@ -276,6 +274,7 @@ function initAutocomplete() {
       }
     }); //Closing the function that returns the location on the map
     map.fitBounds(bounds);
+    map.setZoom(12);
   }); //Closing the anonymous function that looks for the search
 } // Close initAutocomplete function
 
