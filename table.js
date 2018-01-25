@@ -21,13 +21,13 @@ function updateTable(name, hereNow, address, url, id) {
 
   var tableURL = $('<td>')
 
-  if (url == undefined){
-  }
-  else{
+  if (url == undefined) {
+
+  } else {
     var ah = $('<a>');
     ah.attr('href', url);
     ah.text('Visit their site');
-}
+  }
 
   rTag.append(tableLocationName);
   rTag.append(tableHereNow);
