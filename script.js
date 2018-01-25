@@ -1,8 +1,8 @@
 var googleApi_key = 'AIzaSyALhVNfaKgpvJuLqX6VuPljcwgUcEj_qHw';
-// var clientID = 'PDKD4SZGV2WUM3HW00FFLWJGUMMLSFLMG4UGKN4DEGDH0GWB';
-// var clientSecret = 'JWQ5SO32GUFAKVDX5QWE1PPIHSKER40VTOWT01PUSA1O42TS';
-var clientID = 'Z3ZK4RYUU12ONLPWGOTA5DY3KOTMYFIVRFEOWW0KZ3VB13TF';
-var clientSecret = 'JRZK5DZC5GJVEFTIOEJVEGH14KPSI5V5XUJWPD3KTYFXEQK1';
+var clientID = 'FKPEU53XWHVZ5GJJWFTRGHGW4I4KU1XJHYDUSPCAOK1LGYLJ';
+var clientSecret = 'YH5BV2ZY45UCFCXH44GAT4NWM1RG1RDAK4KQQDDEUKO2JPDT';
+// var clientID = 'Z3ZK4RYUU12ONLPWGOTA5DY3KOTMYFIVRFEOWW0KZ3VB13TF';
+// var clientSecret = 'JRZK5DZC5GJVEFTIOEJVEGH14KPSI5V5XUJWPD3KTYFXEQK1';
 
 //Creating a call to moment'js in order to add to the end of the squareURL
 var now = moment().format("YYYYMMDD");
@@ -15,7 +15,7 @@ var metersConversion = 1609.34;
 var area = "Washington,%20DC,%20United%20States";
 var radius = '16093.4';
 var search;
-var searchBar = true;
+var searchBar;
 var fscoordinates;
 
 
@@ -27,7 +27,7 @@ function searchFourSquare(search) {
 
   // URL endpoint for foursquare which contains the city of Washington DC hardcoded in for now
   // on checkbox click trigger this search!!!
-  if (searchBar === true) {
+  if (searchBar ===  true) {
     // One search for area.
     var squareURL = 'https://api.foursquare.com/v2/venues/search?' +
       'near=' + area + '&' +
@@ -38,7 +38,17 @@ function searchFourSquare(search) {
       'v=' + now;
 
     // One search for category
-  } else {
+  }
+  else if (searchBar === null){
+    var squareURL = 'https://api.foursquare.com/v2/venues/search?' +
+          'near=' + area + '&' +
+          'client_id=' + clientID + '&' +
+          'client_secret=' + clientSecret + '&' +
+          'radius=' + radius + '&' +
+          'limit=50' + '&' +
+          'v=' + now;
+  }
+  else {
 
     var squareURL = 'https://api.foursquare.com/v2/venues/search?' +
       'near=' + area + '&' +
@@ -48,8 +58,6 @@ function searchFourSquare(search) {
       'radius=' + radius + '&' +
       'limit=50' + '&' +
       'v=' + now;
-      console.log(squareURL);
-      console.log(area);
   }
 
   //Making a call to the url for the city in order to display the popular locations
@@ -64,8 +72,6 @@ function searchFourSquare(search) {
     venues.sort(function(a, b) {
       return b.stats.checkinsCount - a.stats.checkinsCount;
     });
-    console.log('venues: ', venues);
-
     for (var i = 0; i < venues.length; i++) {
 
       if (typeof(venues[i].categories) === 'undefined' || venues[i].categories.length == 0) {
@@ -291,8 +297,10 @@ $(document).ready(function() {
   // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
   $('.modal').modal();
   $('select').material_select();
+  searchBar = true;
   searchFourSquare(area);
-  searchVenues(places);
+  searchBar = null;
+  searchFourSquare(area);
 
 });
 

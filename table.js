@@ -23,7 +23,6 @@ function updateTable(name, hereNow, address, url, id) {
   var tableURL = $('<td>')
 
   if (url == undefined){
-console.log(url);
   }
   else{
     console.log(url);
