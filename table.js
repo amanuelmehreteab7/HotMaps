@@ -22,15 +22,13 @@ function updateTable(name, hereNow, address, url, id) {
 
   var tableURL = $('<td>')
 
-  if (url == undefined){
-console.log(url);
+  if (url == undefined) {
+    
+  } else {
+    var ah = $('<a>');
+    ah.attr('href', url);
+    ah.text('Visit their site');
   }
-  else{
-    console.log(url);
-  var ah = $('<a>');
-  ah.attr('href', url);
-  ah.text('Visit their site');
-}
 
   rTag.append(tableLocationName);
   rTag.append(tableHereNow);
@@ -39,7 +37,7 @@ console.log(url);
   tableURL.append(ah)
   tableBodyID.append(rTag);
 }
-tableClick = (e)  => {
-    whyNot(e);
-    console.log(e);
-  }
+tableClick = (e) => {
+  whyNot(e);
+  console.log(e);
+}

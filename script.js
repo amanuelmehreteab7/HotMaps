@@ -3,8 +3,8 @@ var googleApi_key = 'AIzaSyALhVNfaKgpvJuLqX6VuPljcwgUcEj_qHw';
 // var clientSecret = 'JWQ5SO32GUFAKVDX5QWE1PPIHSKER40VTOWT01PUSA1O42TS';
 // var clientID = 'Z3ZK4RYUU12ONLPWGOTA5DY3KOTMYFIVRFEOWW0KZ3VB13TF';
 // var clientSecret = 'JRZK5DZC5GJVEFTIOEJVEGH14KPSI5V5XUJWPD3KTYFXEQK1';
-var ClientID = 'FKPEU53XWHVZ5GJJWFTRGHGW4I4KU1XJHYDUSPCAOK1LGYLJ';
-var ClientSecret = 'YH5BV2ZY45UCFCXH44GAT4NWM1RG1RDAK4KQQDDEUKO2JPDT';
+var clientID = 'FKPEU53XWHVZ5GJJWFTRGHGW4I4KU1XJHYDUSPCAOK1LGYLJ';
+var clientSecret = 'YH5BV2ZY45UCFCXH44GAT4NWM1RG1RDAK4KQQDDEUKO2JPDT';
 
 //Creating a call to moment'js in order to add to the end of the squareURL
 var now = moment().format("YYYYMMDD");
@@ -191,7 +191,6 @@ function addMarker(latLng, id, number) {
   lint = (name, venueId, hereNow, address, url, twitter) => {
     marker.addListener('click', function() {
       setTimeout(function() {
-        // updateAndOpenDiscovery(name, hereNow, address, url);
         activateSidePanel(name, venueId, hereNow, address, url);
         updateTwitterTimeline(twitter);
 
