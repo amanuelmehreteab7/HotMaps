@@ -10,10 +10,10 @@ var markers = [];
 var mapLat = 38.8961336;
 var mapLgt = -77.0028392;
 var metersConversion = 1609.34;
-var area;
-var radius;
+var area = "Washington,%20DC,%20United%20States";
+var radius = '16093.4';
 var search;
-var searchBar = true;
+var searchBar;
 var fscoordinates;
 
 //Creating a request to search four square
@@ -23,7 +23,7 @@ function searchFourSquare(search) {
 
   // URL endpoint for foursquare which contains the city of Washington DC hardcoded in for now
   // on checkbox click trigger this search!!!
-  if (searchBar === true) {
+  if (searchBar ===  true) {
     // One search for area.
     var squareURL = 'https://api.foursquare.com/v2/venues/search?' +
       'near=' + area + '&' +
@@ -34,7 +34,17 @@ function searchFourSquare(search) {
       'v=' + now;
 
     // One search for category
-  } else {
+  }
+  else if (searchBar === null){
+    var squareURL = 'https://api.foursquare.com/v2/venues/search?' +
+          'near=' + area + '&' +
+          'client_id=' + clientID + '&' +
+          'client_secret=' + clientSecret + '&' +
+          'radius=' + radius + '&' +
+          'limit=50' + '&' +
+          'v=' + now;
+  }
+  else {
 
     var squareURL = 'https://api.foursquare.com/v2/venues/search?' +
       'near=' + area + '&' +
@@ -306,6 +316,10 @@ $(document).ready(function() {
   mixpanel.track("Open Table")
   $('.modal').modal();
   $('select').material_select();
+  searchBar = true;
+  searchFourSquare(area);
+  searchBar = null;
+  searchFourSquare(area);
 
 });
 
