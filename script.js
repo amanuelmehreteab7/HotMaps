@@ -18,7 +18,6 @@ var search;
 var searchBar = true;
 var fscoordinates;
 
-$("#logo").append('<img src="./images/HotMapsLogo.png" alt=HotMaps>')
 //Creating a request to search four square
 // stop this function after we get all places.
 function searchFourSquare(search) {
@@ -192,7 +191,15 @@ function addMarker(latLng, id, number) {
         // updateAndOpenDiscovery(name, hereNow, address, url);
         activateSidePanel(name, venueId, hereNow, address, url);
         updateTwitterTimeline(twitter);
-
+        mixpanel.track(
+          "Click on Marker",
+          {"name": name,
+          "venue Id": venueId,
+          "Here Now": hereNow,
+          "address": address,
+          "url": url
+          }
+        )
 
       }, 100);
     });
@@ -269,12 +276,17 @@ $('#search').keypress(function(e) {
     event.preventDefault();
 
     initSearch();
+    mixpanel.track(
+      "Search",
+      {"City": area});
   }
 });
 
 $('.btn-floating').on('click', function(event) {
   search = $(this).attr('data-cat-id');;
-  console.log(search);
+  var buttonName = $(this).attr('data-tooltip')
+  mixpanel.track("Quick Filter",
+  {"Quick Filter Name": buttonName})
   searchFourSquare(search);
   searchBar = false;
   clearMarkers()
@@ -283,11 +295,17 @@ $('.btn-floating').on('click', function(event) {
 $('#radius').change(function() {
   event.preventDefault();
 
+  //Track all quick filter button clicks
+  mixpanel.track(
+    "Radius Change",
+    {"radius":this.value})
+
   initSearch();
 })
 
 $(document).ready(function() {
   // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+  mixpanel.track("Open Table")
   $('.modal').modal();
   $('select').material_select();
 

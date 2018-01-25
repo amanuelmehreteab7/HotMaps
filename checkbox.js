@@ -17,6 +17,12 @@ $(document).on('click', 'input.cat', function() {
   deleteMarkers();
 
   searchFourSquare(searchId);
+  mixpanel.track(
+    "Category Filter",
+    {
+      "Name": this.id
+    }
+  )
 });
 
 // Add button with search categoryID to data attribute
@@ -24,7 +30,7 @@ function oneRadioBtn(place) {
 
   var pTag = $('<p>');
 
-  var input = $('<input type="radio"/>');
+  input = $('<input type="radio"/>');
   input.attr('id', place.cat);
   input.attr('data-cat-id', place.categoryId);
   input.attr('name', 'group-cat')
