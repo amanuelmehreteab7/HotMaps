@@ -3,6 +3,7 @@ var updateDisoveryHereNow = $(".disoveryHereNow");
 var updateDisoveryAddress = $(".disoveryAddress");
 var updateDisoveryURL = $(".disoveryURL");
 
+
 activateSidePanel = (name, venueId, hereNow, disoveryAddress, disoveryURL) => {
 
   updateDisoveryName.text(name);
@@ -19,5 +20,4 @@ activateSidePanel = (name, venueId, hereNow, disoveryAddress, disoveryURL) => {
   $('#open-panel').click()
 
   var venuePhoto = photoSearch(venueId);
-
 }
