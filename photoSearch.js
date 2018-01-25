@@ -1,5 +1,6 @@
 var sidePanelPhoto = $(".photoURL");
 
+//searches for a venue when a marker is selected
 function photoSearch(venueId) {
 
   var venueId = venueId;

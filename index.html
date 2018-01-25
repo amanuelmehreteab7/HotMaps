@@ -20,6 +20,63 @@
   <!-- Link to Moment.js should go here -->
   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
+  <!-- Adding MixPanel Support -->
+  <!-- start Mixpanel -->
+<script type="text/javascript">
+  (function(e, a) {
+    if (!a.__SV) {
+      var b = window;
+      try {
+        var c, l, i, j = b.location,
+          g = j.hash;
+        c = function(a, b) {
+          return (l = a.match(RegExp(b + "=([^&]*)"))) ? l[1] : null
+        };
+        g && c(g, "state") && (i = JSON.parse(decodeURIComponent(c(g, "state"))), "mpeditor" === i.action && (b.sessionStorage.setItem("_mpcehash", g), history.replaceState(i.desiredHash || "", e.title, j.pathname + j.search)))
+      } catch (m) {}
+      var k, h;
+      window.mixpanel = a;
+      a._i = [];
+      a.init = function(b, c, f) {
+        function e(b, a) {
+          var c = a.split(".");
+          2 == c.length && (b = b[c[0]], a = c[1]);
+          b[a] = function() {
+            b.push([a].concat(Array.prototype.slice.call(arguments,
+              0)))
+          }
+        }
+        var d = a;
+        "undefined" !== typeof f ? d = a[f] = [] : f = "mixpanel";
+        d.people = d.people || [];
+        d.toString = function(b) {
+          var a = "mixpanel";
+          "mixpanel" !== f && (a += "." + f);
+          b || (a += " (stub)");
+          return a
+        };
+        d.people.toString = function() {
+          return d.toString(1) + ".people (stub)"
+        };
+        k =
+          "disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config reset people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user"
+          .split(" ");
+        for (h = 0; h < k.length; h++) e(d, k[h]);
+        a._i.push([b, c, f])
+      };
+      a.__SV = 1.2;
+      b = e.createElement("script");
+      b.type = "text/javascript";
+      b.async = !0;
+      b.src = "undefined" !== typeof MIXPANEL_CUSTOM_LIB_URL ? MIXPANEL_CUSTOM_LIB_URL : "file:" === e.location.protocol && "//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//) ? "https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js" :
+        "//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";
+      c = e.getElementsByTagName("script")[0];
+      c.parentNode.insertBefore(b, c)
+    }
+  })(document, window.mixpanel || []);
+  mixpanel.init("e4c6c507cecd8a30b2fe58517a17b59b");
+</script>
+<!-- end Mixpanel -->
 
 </head>
 
@@ -48,10 +105,18 @@
 
     <!-- Adding the Side Nave -->
     <div class="col s12 m4 l3 ok">
-      <div>
-      <a href="#modal1" class="waves-effect waves-light modal-trigger logo darken-2 tooltipped" data-position="right" data-tooltip="Top Places">
-        <img src="./images/HotMapsLogo.jpg" alt="HotMaps" class='responsive-img' height="100px" width="350px">
-      </a>
+
+      <div class="row">
+        <div class="col sm12">
+          <!-- Ony show on non mobile screens -->
+          <a href="#modal1" class="waves-effect waves-light modal-trigger logo darken-2 tooltipped hide-on-med-and-down" data-position="right" data-tooltip="Top Places">
+            <img src="./images/HotMapsLogo.jpg" alt="HotMaps" height="150px" width="200px">
+          </a>
+          <!-- Only show the logo on mobile -->
+          <a href="#modal1" class="waves-effect waves-light modal-trigger logoSmall darken-2 tooltipped hide-on-large-only col sm12 offset-m4 offset-s10" data-position="right" data-tooltip="Top Places">
+            <img src="./images/HotMapsLogoMobile.jpg" alt="HotMaps">
+          </a>
+        </div>
       </div>
 
       <div class="input-field col s12">
@@ -67,10 +132,10 @@
 
       <br>
       <div class="row">
-        <div class="col s3"><a data-cat-id="4d4b7105d754a06374d81259" class="btn-floating btn-large waves-effect waves-light blue darken-2 tooltipped" data-position="boton" data-tooltip="Restaurants"><i class="material-icons">local_dining</i></a></div>
-        <div class="col s3"><a data-cat-id="52f2ab2ebcbc57f1066b8b56" class="btn-floating btn-large waves-effect waves-light green darken-2 tooltipped" data-position="boton" data-tooltip="ATM"><i class="material-icons">local_atm</i></a></div>
-        <div class="col s3"><a data-cat-id="4bf58dd8d48988d116941735" class="btn-floating btn-large waves-effect waves-light orange darken-2 tooltipped" data-position="boton" data-tooltip="Bar"><i class="material-icons">local_bar</i></a></div>
-        <div class="col s3"><a data-cat-id="4bf58dd8d48988d104941735" class="btn-floating btn-large waves-effect waves-light red darken-2 tooltipped" data-position="boton" data-tooltip="Hospital"><i class="material-icons">local_hospital</i></a></div>
+        <div class="col s3 m3 l3"><a data-cat-id="4d4b7105d754a06374d81259" class="btn-floating btn-large waves-effect waves-light blue darken-2 tooltipped" data-position="boton" data-tooltip="Restaurantes"><i class="material-icons">local_dining</i></a></div>
+        <div class="col s3 m3 l3"><a data-cat-id="52f2ab2ebcbc57f1066b8b56" class="btn-floating btn-large waves-effect waves-light green darken-2 tooltipped" data-position="boton" data-tooltip="ATM"><i class="material-icons">local_atm</i></a></div>
+        <div class="col s3 m3 l3"><a data-cat-id="4bf58dd8d48988d116941735" class="btn-floating btn-large waves-effect waves-light orange darken-2 tooltipped" data-position="boton" data-tooltip="Bar"><i class="material-icons">local_bar</i></a></div>
+        <div class="col s3 m3 l3"><a data-cat-id="4bf58dd8d48988d104941735" class="btn-floating btn-large waves-effect waves-light red darken-2 tooltipped" data-position="boton" data-tooltip="Hospital"><i class="material-icons">local_hospital</i></a></div>
       </div>
 
       <!-- Activate side panel -->
@@ -108,14 +173,17 @@
     </div>
 
     <!-- Google Maps here -->
-    <div id="wrapper" class="col s12 m8 l9">
+    <div class="row">
 
-      <!-- <input id="search" class="controls col xl6 l6 m6 s9 offset-xl1 offset-l1 offset-m1 offset-s1 searchNav hoverable teal darken-1" type="text" placeholder="Search Box"> -->
-      <div class="col s12" id="map"></div>
+      <div id="wrapper" class="col s12 m8 l9">
 
-      <!-- Adding the search bar -->
-      <input class="hoverable searchBox white black-text darken-1 col xl6 l6 m6 s10" id="search" type="text" placeholder="Search for a city" required>
+        <!-- <input id="search" class="controls col xl6 l6 m6 s9 offset-xl1 offset-l1 offset-m1 offset-s1 searchNav hoverable teal darken-1" type="text" placeholder="Search Box"> -->
+        <div class="col s12" id="map"></div>
 
+        <!-- Adding the search bar -->
+        <input class="hoverable searchBox white black-text darken-1 col xl6 l6 m6 s10" id="search" type="text" placeholder="Search for a city" required>
+
+      </div>
     </div>
 
     <!-- Close Row -->
@@ -131,6 +199,7 @@
       <div class="table">
         <table class="responsive highlight striped">
           <thead>
+
             <tr>
               <th>Name</th>
               <th>Number of people here</th>
@@ -152,7 +221,6 @@
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
   <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-  <script type="text/javascript" src="./category.js"></script>
   <script type="text/javascript" src="./photoSearch.js"></script>
   <script type="text/javascript" src="./checkbox.js"></script>
   <script type="text/javascript" src="./venue.js"></script>

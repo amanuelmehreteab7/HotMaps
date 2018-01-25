@@ -889,10 +889,6 @@ $('.modal').modal({
 
 );
 
-
-
-
-
   radius = 40233.5
   searchFourSquare(search);
   searchBar = false;
