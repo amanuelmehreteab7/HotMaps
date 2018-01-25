@@ -47,10 +47,17 @@
 
     <!-- Adding the Side Nave -->
     <div class="col s12 m4 l3 ok">
-      <div>
-      <a href="#modal1" class="waves-effect waves-light modal-trigger logo darken-2 tooltipped" data-position="right" data-tooltip="Top Places">
-        <img src="./images/HotMapsLogo.jpg" alt="HotMaps" height="100px" width="350px">
-      </a>
+      <div class="row">
+        <div class="col sm12">
+          <!-- Ony show on non mobile screens -->
+          <a href="#modal1" class="waves-effect waves-light modal-trigger logo darken-2 tooltipped hide-on-med-and-down" data-position="right" data-tooltip="Top Places">
+            <img src="./images/HotMapsLogo.jpg" alt="HotMaps" height="150px" width="200px">
+          </a>
+          <!-- Only show the logo on mobile -->
+          <a href="#modal1" class="waves-effect waves-light modal-trigger logoSmall darken-2 tooltipped hide-on-large-only col sm12 offset-m4 offset-s10" data-position="right" data-tooltip="Top Places">
+            <img src="./images/HotMapsLogoMobile.jpg" alt="HotMaps">
+          </a>
+        </div>
       </div>
 
       <div class="input-field col s12">
@@ -66,10 +73,10 @@
 
       <br>
       <div class="row">
-        <div class="col s3"><a data-cat-id="4d4b7105d754a06374d81259" class="btn-floating btn-large waves-effect waves-light blue darken-2 tooltipped" data-position="boton" data-tooltip="Restaurantes"><i class="material-icons">local_dining</i></a></div>
-        <div class="col s3"><a data-cat-id="52f2ab2ebcbc57f1066b8b56" class="btn-floating btn-large waves-effect waves-light green darken-2 tooltipped" data-position="boton" data-tooltip="ATM"><i class="material-icons">local_atm</i></a></div>
-        <div class="col s3"><a data-cat-id="4bf58dd8d48988d116941735" class="btn-floating btn-large waves-effect waves-light orange darken-2 tooltipped" data-position="boton" data-tooltip="Bar"><i class="material-icons">local_bar</i></a></div>
-        <div class="col s3"><a data-cat-id="4bf58dd8d48988d104941735" class="btn-floating btn-large waves-effect waves-light red darken-2 tooltipped" data-position="boton" data-tooltip="Hospital"><i class="material-icons">local_hospital</i></a></div>
+        <div class="col s3 m3 l3"><a data-cat-id="4d4b7105d754a06374d81259" class="btn-floating btn-large waves-effect waves-light blue darken-2 tooltipped" data-position="boton" data-tooltip="Restaurantes"><i class="material-icons">local_dining</i></a></div>
+        <div class="col s3 m3 l3"><a data-cat-id="52f2ab2ebcbc57f1066b8b56" class="btn-floating btn-large waves-effect waves-light green darken-2 tooltipped" data-position="boton" data-tooltip="ATM"><i class="material-icons">local_atm</i></a></div>
+        <div class="col s3 m3 l3"><a data-cat-id="4bf58dd8d48988d116941735" class="btn-floating btn-large waves-effect waves-light orange darken-2 tooltipped" data-position="boton" data-tooltip="Bar"><i class="material-icons">local_bar</i></a></div>
+        <div class="col s3 m3 l3"><a data-cat-id="4bf58dd8d48988d104941735" class="btn-floating btn-large waves-effect waves-light red darken-2 tooltipped" data-position="boton" data-tooltip="Hospital"><i class="material-icons">local_hospital</i></a></div>
       </div>
 
       <!-- Activate side panel -->
@@ -82,14 +89,17 @@
     </div>
 
     <!-- Google Maps here -->
-    <div id="wrapper" class="col s12 m8 l9">
+    <div class="row">
 
-      <!-- <input id="search" class="controls col xl6 l6 m6 s9 offset-xl1 offset-l1 offset-m1 offset-s1 searchNav hoverable teal darken-1" type="text" placeholder="Search Box"> -->
-      <div class="col s12" id="map"></div>
+      <div id="wrapper" class="col s12 m8 l9">
 
-      <!-- Adding the search bar -->
-      <input class="hoverable searchBox white black-text darken-1 col xl6 l6 m6 s10" id="search" type="text" placeholder="Search for a city" required>
+        <!-- <input id="search" class="controls col xl6 l6 m6 s9 offset-xl1 offset-l1 offset-m1 offset-s1 searchNav hoverable teal darken-1" type="text" placeholder="Search Box"> -->
+        <div class="col s12" id="map"></div>
 
+        <!-- Adding the search bar -->
+        <input class="hoverable searchBox white black-text darken-1 col xl6 l6 m6 s10" id="search" type="text" placeholder="Search for a city" required>
+
+      </div>
     </div>
 
     <!-- Close Row -->

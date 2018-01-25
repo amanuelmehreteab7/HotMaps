@@ -7,9 +7,14 @@
   margin-top: 10px;
 }
 
+.logoSmall{
+  margin-top: 10px;
+  margin-left: 30%;
+}
+
 #search {
   margin-top: 20px;
-  margin-left: 20px;
+  /*margin-left: 20px;*/
   padding-left: 10px;
 }
 
