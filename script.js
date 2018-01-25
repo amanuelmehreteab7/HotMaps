@@ -1,38 +1,27 @@
-var api_key = 'AIzaSyALhVNfaKgpvJuLqX6VuPljcwgUcEj_qHw'
+var googleApi_key = 'AIzaSyALhVNfaKgpvJuLqX6VuPljcwgUcEj_qHw';
+// var clientID = 'PDKD4SZGV2WUM3HW00FFLWJGUMMLSFLMG4UGKN4DEGDH0GWB';
+// var clientSecret = 'JWQ5SO32GUFAKVDX5QWE1PPIHSKER40VTOWT01PUSA1O42TS';
+var clientID = 'FOEHOYQ3ECTHUNXM1TH4XS3WBHYMIM5PZLAW5SUU1MLMTK3N';
+var clientSecret = 'I4UFQ4GE23N5RPUHL1N0FY4OJXUG3MZQ3I2ONSMAUYVUH0KR';
+
+//Creating a call to moment'js in order to add to the end of the squareURL
+var now = moment().format("YYYYMMDD");
+
 var map;
 var markers = [];
 var mapLat = 38.8961336;
 var mapLgt = -77.0028392;
-var area = 'Washington';
+var metersConversion = 1609.34;
+var area;
+var radius;
 var search;
 var searchBar = true;
+var fscoordinates;
 
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 12,
-    center: {
-      lat: mapLat,
-      lng: mapLgt
-    }
-  });
-}
-
-console.log("hello");
 //Creating a request to search four square
 // stop this function after we get all places.
 function searchFourSquare(search) {
   var fscoordinates = []; //This will hold our array of objects which is the response from FourSquare
-
-  // var clientID = 'PDKD4SZGV2WUM3HW00FFLWJGUMMLSFLMG4UGKN4DEGDH0GWB';
-  // var clientSecret = 'JWQ5SO32GUFAKVDX5QWE1PPIHSKER40VTOWT01PUSA1O42TS';
-  var clientID = 'Z3ZK4RYUU12ONLPWGOTA5DY3KOTMYFIVRFEOWW0KZ3VB13TF';
-  var clientSecret = 'JRZK5DZC5GJVEFTIOEJVEGH14KPSI5V5XUJWPD3KTYFXEQK1';
-
-  //Creating a call to moment'js in order to add to the end of the squareURL
-  var now = moment().format("YYYYMMDD");
-
-  // search radius
-  var radius = 8000; // meters
 
   // URL endpoint for foursquare which contains the city of Washington DC hardcoded in for now
   // on checkbox click trigger this search!!!
@@ -43,19 +32,22 @@ function searchFourSquare(search) {
       'client_id=' + clientID + '&' +
       'client_secret=' + clientSecret + '&' +
       'radius=' + radius + '&' +
-      'limit=20' + '&' +
+      'limit=50' + '&' +
       'v=' + now;
 
     // One search for category
   } else {
+
     var squareURL = 'https://api.foursquare.com/v2/venues/search?' +
       'near=' + area + '&' +
       'client_id=' + clientID + '&' +
       'client_secret=' + clientSecret + '&' +
       'categoryId=' + search + '&' +
       'radius=' + radius + '&' +
-      'limit=20' + '&' +
+      'limit=50' + '&' +
       'v=' + now;
+      console.log(squareURL);
+      console.log(area);
   }
 
   //Making a call to the url for the city in order to display the popular locations
@@ -66,24 +58,24 @@ function searchFourSquare(search) {
 
     // For each of the venue responses matching the city, loop through and create an array of objects
     var venues = data.response.venues;
-    // console.log(venues);
     //sorts the response by most checkinsCount
     venues.sort(function(a, b) {
       return b.stats.checkinsCount - a.stats.checkinsCount;
     });
+    console.log('venues: ', venues);
 
     for (var i = 0; i < venues.length; i++) {
 
-      if (typeof(venues[i].categories) === 'undefined' || venues[i].categories.length ==0){
+      if (typeof(venues[i].categories) === 'undefined' || venues[i].categories.length == 0) {
         var cat = "still undefined";
         var checkinsCount = 0;
-        var category_Id = "still undefined"
+        var categoryId = "still undefined"
 
       } else {
 
         var cat = venues[i].categories[0].name;
         var checkinsCount = venues[i].stats.checkinsCount;
-        var category_Id = venues[i].categories[0].id
+        var categoryId = venues[i].categories[0].id
       }
 
       var name = venues[i].name;
@@ -94,26 +86,36 @@ function searchFourSquare(search) {
       var url = venues[i].url;
       var hereNow = venues[i].hereNow.count;
       var checkinsCount = venues[i].stats.checkinsCount;
-      var categoryId = venues[i].categories[0].id;
       var twitter = venues[i].contact.twitter;
-      console.log(twitter)
       var venue = new Venue(name, cat, lat, lng, address, venueId, url, hereNow, checkinsCount, categoryId, twitter);
 
       fscoordinates.push(venue);
     }
 
-    console.log(fscoordinates);
 
     if (searchBar === true) {
       searchCategories(fscoordinates);
 
     } else {
-      console.log('fscoord: ', fscoordinates);
+
       searchVenues(fscoordinates);
 
     }
   }); // Completes the function that pulls down the response
 } // Completes the entire function that searches foursquare
+
+// Initialize search
+function initSearch() {
+  searchBar = true;
+
+  // clear existing buttons
+  catId.empty();
+
+  area = $('#search').val().trim();
+  radius = $('#radius').val().trim() * metersConversion;
+
+  searchFourSquare(search);
+}
 
 // triggered on search
 function searchCategories(places) {
@@ -132,23 +134,22 @@ function searchCategories(places) {
 // triggered on button click
 function searchVenues(places) {
   $('#addRow').empty()
-  console.log('places: ', places);
-  for (var i = 0; i < 10; i++) {
+  for (var i = 0; i < 15; i++) {
     var latLng = {
       lat: places[i].lat,
       lng: places[i].lng
     }
     var categoryId = places[i].categoryId;
     var name = places[i].name;
+    var venueId = places[i].venueId;
     var hereNow = places[i].hereNow;
     var url = places[i].url;
     var address = places[i].address;
     var twitter = places[i].twitter;
-    console.log(twitter);
 
-    addMarker(latLng, categoryId);
+    addMarker(latLng, categoryId, i);
 
-    lint(name, hereNow, address, url, categoryId, twitter);
+    lint(name, venueId, hereNow, address, url, twitter);
 
     updateTable(name, hereNow, address, url, categoryId);
     // add
@@ -156,14 +157,25 @@ function searchVenues(places) {
 }
 
 // Adds a marker to the map and push to the array.
-function addMarker(latLng, id) {
+
+function addMarker(latLng, id, number) {
+  var colorGradient = ['#FF7C30', '#F07F3E', '#E1834D', '#D2875C', '#C38B6B', '#B58F79', '#A69388', '#979797', '#889BA6', '#799FB5', '#6BA3C3', '#5CA7D2', '#4DABE1', '#3EAFF0', '#30B3FF'];
+  var icon = {
+    path: 'M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z',
+    fillColor: colorGradient[number],
+    fillOpacity: 1,
+    scale: 0.6,
+    strokeColor: colorGradient[number]
+  }
+
   var marker = new google.maps.Marker({
     position: latLng,
     map: map,
+    icon: icon,
+    // label: number.toString(),
     store_id: id
   });
   markers.push(marker);
-  // console.log(marker.store_id);
 
   whyNot = (e) => {
     for (i = 0; i < markers.length; i++) {
@@ -173,16 +185,26 @@ function addMarker(latLng, id) {
     }
   }
 
-  lint = (name, hereNow, address, url, id, twitter) => {
+  lint = (name, venueId, hereNow, address, url, twitter) => {
     marker.addListener('click', function() {
-      updateAndOpenDiscovery(name, hereNow, address, url, id);
-      updateTwitterTimeline(twitter);
-      // console.log(marker.store_id);
+      setTimeout(function() {
+        // updateAndOpenDiscovery(name, hereNow, address, url);
+        activateSidePanel(name, venueId, hereNow, address, url);
+        updateTwitterTimeline(twitter);
+        mixpanel.track(
+          "Click on Marker",
+          {"name": name,
+          "venue Id": venueId,
+          "Here Now": hereNow,
+          "address": address,
+          "url": url
+          }
+        )
 
+      }, 100);
     });
   }
 }
-
 // Sets the map on all markers in the array.
 function setMapOnAll(map) {
   for (var i = 0; i < markers.length; i++) {
@@ -202,26 +224,95 @@ function deleteMarkers() {
   markers = [];
 }
 
+function initAutocomplete() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {
+      lat: 38.8961336,
+      lng: -77.0028392
+    },
+    zoom: 12,
+    styles: mapStyleHot,
+    mapTypeId: 'roadmap'
+  });
+
+  // Create the search box and link it to the UI element.
+  var input = document.getElementById('search');
+  var searchBox = new google.maps.places.SearchBox(input);
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+
+  // Listen for the event fired when the user selects a prediction and retrieve
+  // more details for that place.
+  searchBox.addListener('places_changed', function() {
+    var places = searchBox.getPlaces();
+    if (places.length == 0) {
+      return;
+    }
+
+
+    // For each place, get the location.
+    var bounds = new google.maps.LatLngBounds();
+    places.forEach(function(place) {
+      if (!place.geometry) {
+        console.log("Returned place contains no geometry");
+        return;
+      }
+
+      if (place.geometry.viewport) {
+        // Only geocodes have viewport.
+        bounds.union(place.geometry.viewport);
+      } else {
+        bounds.extend(place.geometry.location);
+      }
+    }); //Closing the function that returns the location on the map
+    map.fitBounds(bounds);
+  }); //Closing the anonymous function that looks for the search
+} // Close initAutocomplete function
+
 // searching for city triggers location change on map and generating of categories
 // Trigger search event
-$('#searchCity').on('click', function(event) {
-  searchBar = true;
-  event.preventDefault();
-
-  // area = $('#search').val().trim();
-  area = 'Washington';
-
-  searchFourSquare(search);
-  // searchCategories(places);
-})
-
 $('#search').keypress(function(e) {
-  if (e.which == 13) { //Enter key pressed
-    $('#searchCity').click(); //Trigger search button click event
+  if (e.which == 13) {
+    event.preventDefault();
+
+    initSearch();
+    mixpanel.track(
+      "Search",
+      {"City": area});
   }
 });
 
-$(document).ready(function(){
-  // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-  $('.modal').modal();
+$('.btn-floating').on('click', function(event) {
+  search = $(this).attr('data-cat-id');;
+  var buttonName = $(this).attr('data-tooltip')
+  mixpanel.track("Quick Filter",
+  {"Quick Filter Name": buttonName})
+  searchFourSquare(search);
+  searchBar = false;
+  clearMarkers()
 });
+
+$('#radius').change(function() {
+  event.preventDefault();
+
+  //Track all quick filter button clicks
+  mixpanel.track(
+    "Radius Change",
+    {"radius":this.value})
+
+  initSearch();
+})
+
+$(document).ready(function() {
+  // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+  mixpanel.track("Open Table")
+  $('.modal').modal();
+  $('select').material_select();
+
+});
+
+$(window).click(function() {
+  restoreCat();
+});
+
+$(".button-collapse").sideNav();

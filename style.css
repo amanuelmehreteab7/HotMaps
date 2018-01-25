@@ -1,13 +1,34 @@
-
 #map {
-  height: 1000px;
+  height: 740px;
   width: 100%;
 }
 
-.searchNav {
-  position: absolute;
-  top: 50px;
-  z-index: 2;
+.logo {
+  margin-top: 10px;
+  width: auto;
+}
+
+.logoSmall{
+  margin-top: 10px;
+  margin-left: 30%;
+}
+
+#search {
+  margin-top: 20px;
+  /*margin-left: 20px;*/
+  padding-left: 10px;
+}
+
+#search:hover {
+  font-size: 150%;
+}
+
+#open-panel {
+  display: none;
+}
+
+.pac-item-query:hover {
+  font-size: 150%;
 }
 
 html, body {
@@ -20,9 +41,26 @@ header, main, footer {
   padding-left: 300px;
 }
 
-@media only screen and (max-width: 600px) {
-  .searchNav {
-    position: absolute;
-    top: 400px;
-    z-index: 2;
+/* COLORS */
+
+.orange-txt {
+  color: #FF7C30;
+}
+
+.drk-organe-txt {
+  color: #C5A08B;
+}
+
+.lt-blue-bg {
+  background-color: #FAFFFF;
+}
+
+.disoveryName {
+  padding-left: 10px;
+}
+
+#twitter {
+  padding-top: 0px;
+  z-index: 5000;
+  /* position: absolute; */
 }
