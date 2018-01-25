@@ -3,6 +3,7 @@ var updateDisoveryHereNow = $(".disoveryHereNow");
 var updateDisoveryAddress = $(".disoveryAddress");
 var updateDisoveryURL = $(".disoveryURL");
 
+//Launches sidepanel when a marker is clicked
 
 activateSidePanel = (name, venueId, hereNow, disoveryAddress, disoveryURL) => {
 

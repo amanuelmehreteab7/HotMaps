@@ -1,6 +1,7 @@
 
 var sidePanel = $('#twitter');
 
+//Search twitter to see if the selected place has a Twitter feed
 updateTwitterTimeline = profile => {
 
   if (profile == undefined)

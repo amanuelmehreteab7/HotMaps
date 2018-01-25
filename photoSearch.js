@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+var sidePanelPhoto = $(".photoURL");
+
+//searches for a venue when a marker is selected
+>>>>>>> develop
 function photoSearch(venueId) {
   // Remove exisiting photo
   $('.background').empty();
