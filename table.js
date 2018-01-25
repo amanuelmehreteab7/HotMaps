@@ -1,14 +1,13 @@
 var tableBodyID = $('#addRow');
 
+
+//Add contect to the table based on the foursquare data
 function updateTable(name, hereNow, address, url, id) {
 
-  // document.getElementById("table").clear();
-  // document.getElementById("table").style.display="table";
 
   var rTag = $('<tr>');
 
-  // rTag.attr('id', id)
-  // rTag.attr("onclick", "tableClick(this.id)");
+
   rTag.attr('class', 'delete');
   rTag.attr('id', id);
   var tableLocationName = $('<td>');
@@ -22,15 +21,13 @@ function updateTable(name, hereNow, address, url, id) {
 
   var tableURL = $('<td>')
 
-  if (url == undefined){
-console.log(url);
+  if (url == undefined) {
+
+  } else {
+    var ah = $('<a>');
+    ah.attr('href', url);
+    ah.text('Visit their site');
   }
-  else{
-    console.log(url);
-  var ah = $('<a>');
-  ah.attr('href', url);
-  ah.text('Visit their site');
-}
 
   rTag.append(tableLocationName);
   rTag.append(tableHereNow);
@@ -41,5 +38,4 @@ console.log(url);
 }
 tableClick = (e)  => {
     whyNot(e);
-    console.log(e);
   }

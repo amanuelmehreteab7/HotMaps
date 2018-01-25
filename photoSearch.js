@@ -1,6 +1,13 @@
+<<<<<<< HEAD
+=======
 var sidePanelPhoto = $(".photoURL");
 
+//searches for a venue when a marker is selected
+>>>>>>> develop
 function photoSearch(venueId) {
+  // Remove exisiting photo
+  $('.background').empty();
+  console.log('a');
 
   var venueId = venueId;
   var squareURL = 'https://api.foursquare.com/v2/venues/' +
@@ -9,8 +16,6 @@ function photoSearch(venueId) {
     'client_id=' + clientID + '&' +
     'client_secret=' + clientSecret + '&' +
     'v=' + now;
-    console.log(squareURL);
-
 
   $.ajax({
     url: squareURL,
@@ -24,9 +29,16 @@ function photoSearch(venueId) {
 
     var photoURL = prefix + size + suffix;
 
-    sidePanelPhoto.attr('src', photoURL);
+    var addImg = $('<img class="photoURL">');
+    addImg.addClass('photoURL');
 
     //set photo in here.
+    addImg.attr('src', photoURL);
+    // addImg.append(sidePanelPhoto);
+    $('.background').append(addImg);
+
+    console.log('b');
+
 
   });
 }
