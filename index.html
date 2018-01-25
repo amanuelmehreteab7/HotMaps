@@ -20,6 +20,7 @@
   <!-- Link to Moment.js should go here -->
   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
+
 </head>
 
 <body>
@@ -49,7 +50,7 @@
     <div class="col s12 m4 l3 ok">
       <div>
       <a href="#modal1" class="waves-effect waves-light modal-trigger logo darken-2 tooltipped" data-position="right" data-tooltip="Top Places">
-        <img src="./images/HotMapsLogo.jpg" alt="HotMaps" height="100px" width="350px">
+        <img src="./images/HotMapsLogo.jpg" alt="HotMaps" class='responsive-img' height="100px" width="350px">
       </a>
       </div>
 
@@ -66,7 +67,7 @@
 
       <br>
       <div class="row">
-        <div class="col s3"><a data-cat-id="4d4b7105d754a06374d81259" class="btn-floating btn-large waves-effect waves-light blue darken-2 tooltipped" data-position="boton" data-tooltip="Restaurantes"><i class="material-icons">local_dining</i></a></div>
+        <div class="col s3"><a data-cat-id="4d4b7105d754a06374d81259" class="btn-floating btn-large waves-effect waves-light blue darken-2 tooltipped" data-position="boton" data-tooltip="Restaurants"><i class="material-icons">local_dining</i></a></div>
         <div class="col s3"><a data-cat-id="52f2ab2ebcbc57f1066b8b56" class="btn-floating btn-large waves-effect waves-light green darken-2 tooltipped" data-position="boton" data-tooltip="ATM"><i class="material-icons">local_atm</i></a></div>
         <div class="col s3"><a data-cat-id="4bf58dd8d48988d116941735" class="btn-floating btn-large waves-effect waves-light orange darken-2 tooltipped" data-position="boton" data-tooltip="Bar"><i class="material-icons">local_bar</i></a></div>
         <div class="col s3"><a data-cat-id="4bf58dd8d48988d104941735" class="btn-floating btn-large waves-effect waves-light red darken-2 tooltipped" data-position="boton" data-tooltip="Hospital"><i class="material-icons">local_hospital</i></a></div>
@@ -78,6 +79,31 @@
       <div>
         <form id="cat" action="#"></form>
       </div>
+      <br>
+      <!-- Adding the seach by category -->
+      <!-- Modal Trigger -->
+      <div class="row">
+        <div class="col s3 offset-s9">
+          <a class="btn-floating btn-large waves-effect waves-light modal-trigger black" href="#modal2"><i class="material-icons">add</i></a>
+        </div>
+      </div>
+
+<!-- Modal Structure -->
+<div id="modal2" class="modal">
+  <div class="modal-content">
+    <h4>Search for new category</h4>
+    <div class="row">
+      <div class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <input type="text" id="autocomplete-input" class="autocomplete">
+            <label for="autocomplete-input">Category</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
     </div>
 
@@ -136,6 +162,8 @@
   <script type="text/javascript" src="./script.js"></script>
   <script type="text/javascript" src="./table.js"></script>
   <script type="text/javascript" src="./twitter.js"></script>
+  <script type="text/javascript" src="./categories.js"></script>
+
 
 </body>
 
