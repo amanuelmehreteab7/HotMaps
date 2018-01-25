@@ -18,7 +18,7 @@ var search;
 var searchBar = true;
 var fscoordinates;
 
-$("#logo").append('<img src="./images/HotMapsLogo.png" alt=HotMaps>')
+
 //Creating a request to search four square
 // stop this function after we get all places.
 function searchFourSquare(search) {
@@ -59,7 +59,6 @@ function searchFourSquare(search) {
 
     // For each of the venue responses matching the city, loop through and create an array of objects
     var venues = data.response.venues;
-    
     //sorts the response by most checkinsCount
     venues.sort(function(a, b) {
       return b.stats.checkinsCount - a.stats.checkinsCount;
