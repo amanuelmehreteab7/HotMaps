@@ -84,7 +84,7 @@
   <ul id="slide-out" class="side-nav">
     <li>
       <div class="background">
-        <img class="photoURL">
+        <!-- <img class="photoURL"> -->
       </div>
     </li>
     <li>
@@ -97,14 +97,13 @@
     <li><a class="disoveryURL" href="#!"><i class="material-icons">cloud</i>website</a>
       <div id="twitter"></div>
     </li>
-    <!-- <li>
-    </li> -->
   </ul>
 
   <div class="row lt-blue-bg" id="wrapper">
 
     <!-- Adding the Side Nave -->
     <div class="col s12 m4 l3 ok">
+
       <div class="row">
         <div class="col sm12">
           <!-- Ony show on non mobile screens -->
@@ -120,6 +119,7 @@
 
       <div class="input-field col s12">
         <select id="radius">
+          <option value="2">2</option>
           <option value="5">5</option>
           <option value="10">10</option>
           <option value="25">25</option>
@@ -143,6 +143,31 @@
       <div>
         <form id="cat" action="#"></form>
       </div>
+      <br>
+      <!-- Adding the seach by category -->
+      <!-- Modal Trigger -->
+      <div class="row">
+        <div class="col s3 offset-s9">
+          <a class="btn-floating btn-large waves-effect waves-light modal-trigger black" href="#modal2"><i class="material-icons">add</i></a>
+        </div>
+      </div>
+
+<!-- Modal Structure -->
+<div id="modal2" class="modal">
+  <div class="modal-content">
+    <h4>Search for new category</h4>
+    <div class="row">
+      <div class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <input type="text" id="autocomplete-input" class="autocomplete">
+            <label for="autocomplete-input">Category</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
     </div>
 
@@ -195,7 +220,6 @@
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
   <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-  <script type="text/javascript" src="./category.js"></script>
   <script type="text/javascript" src="./photoSearch.js"></script>
   <script type="text/javascript" src="./checkbox.js"></script>
   <script type="text/javascript" src="./venue.js"></script>
@@ -205,6 +229,8 @@
   <script type="text/javascript" src="./script.js"></script>
   <script type="text/javascript" src="./table.js"></script>
   <script type="text/javascript" src="./twitter.js"></script>
+  <script type="text/javascript" src="./categories.js"></script>
+
 
 </body>
 
