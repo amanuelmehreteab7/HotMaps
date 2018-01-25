@@ -884,7 +884,7 @@ for (var i = 0; i < categories2.length; i++) {
 }
 
 $('.modal').modal({
-    complete: function() { alert('Closed'); } // Callback for Modal close
+    complete: function() { console.log('Closed'); } // Callback for Modal close
   }
 
 );
